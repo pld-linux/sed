@@ -5,7 +5,7 @@ Summary(pl):	Edytor GNU strumienia tekstu
 Summary(tr):	GNU dosya iþleme aracý
 Name:		sed
 Version:	3.02
-Release:	12
+Release:	13
 License:	GPL
 Group:		Applications/Text
 Source0:	ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
@@ -16,6 +16,8 @@ Patch2:		%{name}-autoconf_fix.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	ssed
+Provides:       sed
 
 %define		_bindir		/bin
 
