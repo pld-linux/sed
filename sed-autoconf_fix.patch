@@ -1,0 +1,24 @@
+diff -Nriu sed-3.02/aclocal.m4 sed-3.02.new/aclocal.m4
+--- sed-3.02/aclocal.m4	Sun Aug  2 02:38:41 1998
++++ sed-3.02.new/aclocal.m4	Thu Jun 17 19:15:51 1999
+@@ -44,7 +44,7 @@
+ dnl AM_INIT_AUTOMAKE(package,version, [no-define])
+ 
+ AC_DEFUN(AM_INIT_AUTOMAKE,
+-[AC_REQUIRE([AM_PROG_INSTALL])
++[AC_REQUIRE([AC_PROG_INSTALL])
+ PACKAGE=[$1]
+ AC_SUBST(PACKAGE)
+ VERSION=[$2]
+diff -Nriu sed-3.02/configure.in sed-3.02.new/configure.in
+--- sed-3.02/configure.in	Sun Aug  2 02:38:33 1998
++++ sed-3.02.new/configure.in	Thu Jun 17 19:19:08 1999
+@@ -102,7 +102,7 @@
+ AC_CHECK_FUNCS(isatty  bcopy bzero isascii memcpy)
+ 
+ AC_ARG_PROGRAM
+-AC_OUTPUT(Makefile djgpp/Makefile doc/Makefile dnl
++AC_OUTPUT(Makefile djgpp/Makefile doc/Makefile
+ lib/Makefile sed/Makefile testsuite/Makefile
+ dnl testsuite/version.good:testsuite/version.gin dnl
+ )
