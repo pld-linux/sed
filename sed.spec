@@ -13,7 +13,7 @@ Source:		ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
 Patch0:		sed.patch
 Patch1:		sed-info.patch
 Patch2:		sed-autoconf_fix.patch
-Prereq:		/sbin/install-info
+Prereq:		/usr/sbin/fix-info-dir
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %define _bindir /bin
@@ -62,12 +62,10 @@ gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*info*,%{_mandir}/man1/*} \
 	ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
 	testsuite/*
 %post
-/sbin/install-info %{_infodir}/sed.info.gz /etc/info-dir
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %preun
-if [ "$1" = "0" ]; then
-	/sbin/install-info --delete %{_infodir}/sed.info.gz /etc/info-dir
-fi
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
