@@ -14,7 +14,7 @@ Patch0:		sed.patch
 Patch1:		sed-info.patch
 Patch2:		sed-autoconf_fix.patch
 Prereq:		/usr/sbin/fix-info-dir
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define _bindir /bin
 
