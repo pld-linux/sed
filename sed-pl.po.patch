@@ -9,18 +9,18 @@
  AM_GNU_GETTEXT(, need-ngettext)
  
  AC_CONFIG_FILES([bootstrap.sh], chmod +x bootstrap.sh)
---- sed-4.0.1/po/pl.po.orig	Thu Jan  1 01:00:00 1970
-+++ sed-4.0.1/po/pl.po	Mon Nov 25 23:24:00 2002
-@@ -0,0 +1,367 @@
+--- sed-4.0.5/po/pl.po.orig	Sat Jan  4 23:15:20 2003
++++ sed-4.0.5/po/pl.po	Sat Jan  4 23:22:01 2003
+@@ -0,0 +1,359 @@
 +# Polish translations for sed.
 +# Copyright (C) 2002 Free Software Foundation, Inc.
 +# Jakub Bogusz <qboosh@pld.org.pl>, 2002.
 +#
 +msgid ""
 +msgstr ""
-+"Project-Id-Version: sed 4.0.2\n"
-+"POT-Creation-Date: 2002-10-28 08:07+0100\n"
-+"PO-Revision-Date: 2002-11-25 22:14+0100\n"
++"Project-Id-Version: sed 4.0.5\n"
++"POT-Creation-Date: 2002-12-16 20:32+0100\n"
++"PO-Revision-Date: 2003-01-04 23:15+0100\n"
 +"Last-Translator: Jakub Bogusz <qboosh@pld.org.pl>\n"
 +"Language-Team: Polish <pl@li.org>\n"
 +"MIME-Version: 1.0\n"
@@ -28,119 +28,111 @@
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 +"|| n%100>=20) ? 1 : 2);\n"
-+  
-+#: sed/compile.c:165
-+msgid "Invalid use of address modifier"
-+msgstr "B³êdne u¿ycie modyfikatora adresu"
 +
-+#: sed/compile.c:166
++#: sed/compile.c:189
 +msgid "Multiple `!'s"
 +msgstr "Wielokrotne `!'"
 +
-+#: sed/compile.c:167
++#: sed/compile.c:190
 +msgid "Unexpected `,'"
 +msgstr "Nieoczekiwany `,'"
 +
-+#: sed/compile.c:168
-+msgid "Unexpected End-of-file"
-+msgstr "Nieoczekiwany koniec pliku"
-+
-+#: sed/compile.c:169
++#: sed/compile.c:191
 +msgid "Cannot use +N or ~N as first address"
 +msgstr "Nie mo¿na u¿yæ +N ani ~N jako pierwszego adresu"
 +
-+#: sed/compile.c:170
++#: sed/compile.c:192
 +msgid "Unmatched `{'"
 +msgstr "Niedopasowany `{'"
 +
-+#: sed/compile.c:171
++#: sed/compile.c:193
 +msgid "Unexpected `}'"
 +msgstr "Nieoczekiwany `}'"
 +
-+#: sed/compile.c:172
++#: sed/compile.c:194
 +msgid "Extra characters after command"
 +msgstr "Nadmiarowe znaki po poleceniu"
 +
-+#: sed/compile.c:173
++#: sed/compile.c:195
 +msgid "Expected \\ after `a', `c' or `i'"
 +msgstr "Oczekiwano \\ po `a', `c' lub `i'"
 +
-+#: sed/compile.c:174
++#: sed/compile.c:196
 +msgid "`}' doesn't want any addresses"
 +msgstr "`}' nie chce ¿adnego adresu"
 +
-+#: sed/compile.c:175
++#: sed/compile.c:197
 +msgid ": doesn't want any addresses"
 +msgstr ": nie chce ¿adnego adresu"
 +
-+#: sed/compile.c:176
++#: sed/compile.c:198
 +msgid "Comments don't accept any addresses"
 +msgstr "Komentarze nie przyjmuj± ¿adnego adresu"
 +
-+#: sed/compile.c:177
++#: sed/compile.c:199
 +msgid "Missing command"
 +msgstr "Brakuj±ce polecenie"
 +
-+#: sed/compile.c:178
++#: sed/compile.c:200
 +msgid "Command only uses one address"
 +msgstr "Polecenie u¿ywa tylko jednego adresu"
 +
-+#: sed/compile.c:179
++#: sed/compile.c:201
 +msgid "Unterminated address regex"
 +msgstr "Nie zakoñczone wyra¿enie regularne dla adresu"
 +
-+#: sed/compile.c:180
++#: sed/compile.c:202
 +msgid "Unterminated `s' command"
 +msgstr "Nie zakoñczone polecenie `s'"
 +
-+#: sed/compile.c:181
++#: sed/compile.c:203
 +msgid "Unterminated `y' command"
 +msgstr "Nie zakoñczone polecenie `y'"
 +
-+#: sed/compile.c:182
++#: sed/compile.c:204
 +msgid "Unknown option to `s'"
 +msgstr "Nieznana opcja dla `s'"
 +
-+#: sed/compile.c:183
++#: sed/compile.c:205
 +msgid "multiple `p' options to `s' command"
 +msgstr "wielokrotne opcje `p' dla polecenia `s'"
 +
-+#: sed/compile.c:184
++#: sed/compile.c:206
 +msgid "multiple `g' options to `s' command"
 +msgstr "wielokrotne opcje `g' dla polecenia `s'"
 +
-+#: sed/compile.c:186
++#: sed/compile.c:207
 +msgid "multiple number options to `s' command"
 +msgstr "wielokrotne opcje liczbowe dla polecenia `s'"
 +
-+#: sed/compile.c:188
++#: sed/compile.c:208
 +msgid "number option to `s' command may not be zero"
 +msgstr "opcja liczbowa dla polecenia `s' nie mo¿e byæ zerem"
 +
-+#: sed/compile.c:190
++#: sed/compile.c:209
 +msgid "strings for y command are different lengths"
 +msgstr "³añcuchy dla polecenia y s± ró¿nej d³ugo¶ci"
 +
-+#: sed/compile.c:233
++#: sed/compile.c:252
 +#, c-format
 +msgid "Called savchar() with unexpected pushback (%x)"
 +msgstr "Wywo³ano savchar() z nieoczekiwanym pushback (%x)"
 +
-+#: sed/compile.c:1319
++#: sed/compile.c:1343
 +msgid "Unknown command:"
 +msgstr "Nieznane polecenie:"
 +
-+#: sed/compile.c:1340
++#: sed/compile.c:1364
 +#, c-format
 +msgid "%s: file %s line %lu: %s\n"
 +msgstr "%s: plik %s linia %lu: %s\n"
 +
-+#: sed/compile.c:1343
++#: sed/compile.c:1367
 +#, c-format
 +msgid "%s: -e expression #%lu, char %lu: %s\n"
 +msgstr "%s: -e wyra¿enie #%lu, znak %lu: %s\n"
 +
-+#: sed/compile.c:1543
++#: sed/compile.c:1567
 +#, c-format
 +msgid "Can't find label for jump to `%s'"
 +msgstr "Nie mo¿na znale¼æ etykiety, aby przeskoczyæ do `%s'"
@@ -172,15 +164,15 @@
 +msgstr "B£¡D WEWNÊTRZNY: B³êdne polecenie %c"
 +
 +#. XXX shouldn't this be (UCHAR_MAX+1)?
-+#: lib/regcomp.c:658 sed/regex.c:47
++#: lib/regcomp.c:661 sed/regex.c:46
 +msgid "No previous regular expression"
 +msgstr "Nie by³o poprzedniego wyra¿enia regularnego"
 +
-+#: sed/regex.c:48
++#: sed/regex.c:47
 +msgid "Cannot specify modifiers on empty regexp"
 +msgstr "Nie mo¿na podaæ modyfikatorów dla pustego wyra¿enia regularnego"
 +
-+#: sed/regex.c:146
++#: sed/regex.c:145
 +#, c-format
 +msgid "Invalid reference \\%d on `s' command's RHS"
 +msgstr "B³êdne odniesienie \\%d po prawej stronie polecenia `s'"

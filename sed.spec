@@ -9,7 +9,7 @@ Summary(ru):	Потоковый редактор текста GNU
 Summary(tr):	GNU dosya iЧleme aracЩ
 Summary(uk):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	4.0.1
+Version:	4.0.5
 Release:	1
 License:	GPL
 Group:		Applications/Text
@@ -91,7 +91,7 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+%patch1 -p1 -b .orig
 
 %build
 %{__aclocal} -I config

@@ -1,14 +1,11 @@
---- sed-4.0.1/doc/sed.texi.orig	Wed Oct  2 17:23:48 2002
-+++ sed-4.0.1/doc/sed.texi	Mon Nov 25 22:13:10 2002
-@@ -22,9 +22,9 @@
- @defcodeindex op
- @syncodeindex op fn
- 
+--- sed-4.0.5/doc/config.texi.orig	Thu Dec 12 20:05:56 2002
++++ sed-4.0.5/doc/config.texi	Sat Jan  4 23:14:46 2003
+@@ -1,6 +1,6 @@
+-@dircategory Text creation and manipulation
 +@dircategory File utilities:
  @direntry
 -* sed: (sed).                   Stream EDitor.
--
 +* sed: (sed).				Stream EDitor
+ 
  @end direntry
  
- @clear PERL
