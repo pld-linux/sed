@@ -79,7 +79,7 @@ gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*info*,%{_mandir}/man1/*} \
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644,root,root)
+%defattr(644,root,root,755)
 %doc *.gz
 %attr(755,root,root) /bin/*
 %{_mandir}/man1/*
