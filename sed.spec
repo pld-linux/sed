@@ -18,7 +18,9 @@ Release:	1
 License:	GPL
 Group:		Applications/Text
 Source0:	ftp://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
+# Source0-md5: 005738e7f97bd77d95b6907156c8202a
 Source1:	%{name}-non-english-man-pages.tar.bz2
+# Source1-md5: 5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-pl.po.patch
 BuildRequires:	autoconf
