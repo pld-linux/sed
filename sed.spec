@@ -9,7 +9,7 @@ Summary(ru):	Потоковый редактор текста GNU
 Summary(tr):	GNU dosya iЧleme aracЩ
 Summary(uk):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	4.0.5
+Version:	4.0.6
 Release:	1
 License:	GPL
 Group:		Applications/Text
@@ -122,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS BUGS ChangeLog NEWS README THANKS
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %lang(de) %{_mandir}/de/man1/*
