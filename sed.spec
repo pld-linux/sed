@@ -5,11 +5,12 @@ Summary(pl):	Edytor GNU strumienia tekstu
 Summary(tr):	GNU dosya iþleme aracý
 Name:		sed
 Version:	3.02
-Release:	9
+Release:	10
 License:	GPL
-Group:		Utilities/Text
-Group(pl):	Narzêdzia/Tekst
+Group:		Applications/Text
+Group(de):	Applikationen/Text
 Group(fr):	Utilitaires/Texte
+Group(pl):	Aplikacje/Tekst
 Source0:	ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
 Patch0:		%{name}.patch
 Patch1:		%{name}-info.patch
@@ -56,7 +57,6 @@ baþka bir katar yazmakta kullanýlýr.
 %patch2 -p1
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 automake
 autoconf
 %configure
@@ -69,8 +69,7 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*info*,%{_mandir}/man1/*} \
-	ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
+gzip -9nf ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
 	testsuite/*
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
