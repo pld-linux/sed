@@ -1,8 +1,12 @@
 Summary:	A GNU stream text editor
 Summary(de):	GNU Stream-Text Editor
+Summary(es):	Editor de stream de la GNU
 Summary(fr):	иditeur de flot de GNU
 Summary(pl):	Edytor GNU strumienia tekstu
+Summary(pt_BR):	Editor de stream da GNU
+Summary(ru):	Потоковый редактор текста GNU
 Summary(tr):	GNU dosya iЧleme aracЩ
+Summary(uk):	Потоковий редактор тексту GNU
 Name:		sed
 Version:	3.02
 Release:	13
@@ -13,6 +17,7 @@ Source1:	%{name}-non-english-man-pages.tar.bz2
 Patch0:		%{name}.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-autoconf_fix.patch
+Patch3:		%{name}-doc.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,6 +39,11 @@ aus, und gibt einen verДnderten Text aus. Die Operationen, die sed
 ausfЭhrt (Ersetzen, LЖschen, EinfЭgen, usw.) kЖnnen Эber eine
 Skriptdatei oder Эber die Kommandozeile angegeben werden.
 
+%description -l es
+Sed copia los archivos nombrados (archivos de la entrada padrСn por
+por defecto) para la salida padrСn, editado de acuerdo con un script
+de comandos.
+
 %description -l fr
 sed copie les fichiers indiquИs (l'entrИe standard par dИfaut),
 modifiИs en fonction d'un script de commandes, vers la sortie
@@ -46,20 +56,41 @@ go wedЁug zestawu operacji i oddaje na wyj╤ciu przetworzony tekst.
 Operacje, ktСre ma wykonywaФ, mog╠ byФ zapisane w postaci skryptu lub
 podane w linii poleceЯ.
 
+%description -l pt_BR
+O sed copia os arquivos indicados (ou a entrada padrЦo caso nЦo
+especificado) para a saМda padrЦo, editado de acordo com um roteiro de
+comandos.
+
+%description -l ru
+sed (Stream EDitor) - это потоковый или пакетный (не-интерактивный)
+редактор. sed исполняет операции над подаваемым ему на вход текстом и
+выдает модифицированный текст. Операции, которые sed выполняет
+(подстановки, удаления, вставки и др.) могут быть заданы в файле
+сценария или с командной строки.
+
 %description -l tr
 Sed, belirtilen dosyalarЩ, verilen komutlara gЖre iЧleyerek standart
 ГЩktЩya kopyalar. Genellikle, metin dosyalarЩnda bir katarЩn yerine
 baЧka bir katar yazmakta kullanЩlЩr.
+
+%description -l uk
+sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
+редактор. sed викону╓ операц╕╖ над текстом, що пода╓ться йому на вх╕д
+та виводить модиф╕кований текст. Операц╕╖, як╕ sed викону╓
+(п╕дстановки, видалення, вставки та ╕н.) можуть бути задан╕ в файл╕
+сценар╕ю чи з командного рядка.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 rm -f missing
 aclocal
+autoheader
 autoconf
 automake -a -c -f
 %configure
