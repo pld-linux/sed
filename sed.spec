@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Sun Nov 15 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.02-3]
-- fixed dc.sed script witch have incorrect patch to sed (must be /bin/sed).
+- fixed dc.sed script which have incorrect patch to sed (must be /bin/sed).
 
 * Mon Oct 12 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.02-2]
