@@ -1,11 +1,11 @@
---- sed-4.0.1/configure.ac.orig	Mon Oct 28 08:33:29 2002
-+++ sed-4.0.1/configure.ac	Mon Nov 25 23:26:20 2002
-@@ -60,7 +60,7 @@
+--- sed-4.0.7/configure.ac.orig	Fri Apr 11 12:03:58 2003
++++ sed-4.0.7/configure.ac	Fri Apr 11 12:04:24 2003
+@@ -106,7 +106,7 @@
  AM_CONDITIONAL(TEXI2HTML_HTML, test "x$enable_html" = xtexi2html)
  
  
--ALL_LINGUAS="ca cs da de el eo es et fi fr gl he hr hu id it ja ko nl pt_BR ru sk sl sv tr zh_CN"
-+ALL_LINGUAS="ca cs da de el eo es et fi fr gl he hr hu id it ja ko nl pl pt_BR ru sk sl sv tr zh_CN"
+-ALL_LINGUAS="ca cs da de el eo es et fi fr gl he hr hu id it ja ko nl pt_BR ro ru sk sl sv tr zh_CN"
++ALL_LINGUAS="ca cs da de el eo es et fi fr gl he hr hu id it ja ko nl pl pt_BR ro ru sk sl sv tr zh_CN"
  AM_GNU_GETTEXT(, need-ngettext)
  
  AC_CONFIG_FILES([bootstrap.sh], chmod +x bootstrap.sh)
