@@ -1,0 +1,20 @@
+--- sed-3.02/configure.in.orig	Wed Apr 10 23:48:31 2002
++++ sed-3.02/configure.in	Wed Apr 10 23:53:39 2002
+@@ -58,7 +58,7 @@
+    [  --with-regex=REGEX-LIB  specify an alternative regex implementation],
+    [case "$withval" in yes|no) ;; *) ac_regex_lib="$withval" ;; esac])
+ case "$ac_regex_lib" in
+-  lib/regex.o) LIBOBJS="$LIBOBJS regex.o" ;;
++  lib/regex.o) AC_LIBOBJ([regex]) ;;
+   ""|no) ;;
+   *) LIBS="$LIBS $ac_regex_lib" ;;
+ esac
+@@ -67,7 +67,7 @@
+   *)  AC_MSG_RESULT(using $ac_regex_lib)  ;;
+ esac
+ 
+-case " $LIBOBJS " in
++case " $LIB@&t@OBJS " in
+   *\ regex.o\ *)
+     ac_cv_func_regnexec=yes
+     ac_cv_func_regexec=yes

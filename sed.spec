@@ -10,7 +10,7 @@ Summary(tr):	GNU dosya iЧleme aracЩ
 Summary(uk):	Потоковий редактор тексту GNU
 Name:		sed
 Version:	3.02
-Release:	13
+Release:	14
 License:	GPL
 Group:		Applications/Text
 Source0:	ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
@@ -19,6 +19,7 @@ Patch0:		%{name}.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-autoconf_fix.patch
 Patch3:		%{name}-doc.patch
+Patch4:		%{name}-ac25x.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -95,6 +96,7 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 rm -f missing
