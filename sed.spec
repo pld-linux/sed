@@ -23,7 +23,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
 BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	automake >= 1.8
 BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	ssed
