@@ -38,9 +38,9 @@ fonction d'un script de commandes, vers la sortie standard.
 
 %description -l pl
 Sed (Stream EDitor) jest edytorem strumieni lub wsadowym (nieinteraktywnym)
-edytorem. Sed pobiera pobiera tekst na wej¶ciu, przetwarza go wed³ug zestawu
-operacji i oddaje na wyj¶ciu przetworzony tekst. Operacje wykonywane z
-u¿yciem seda moga byæ wyspecyfikowane w postaci skryptu lub z linii poleceñ.
+edytorem. Sed pobiera tekst na wej¶ciu, przetwarza go wed³ug zestawu
+operacji i oddaje na wyj¶ciu przetworzony tekst. Operacje, które ma
+wykonywaæ, mog± byæ zapisane w postaci skryptu lub podane w linii poleceñ.
 
 %description -l tr
 Sed, belirtilen dosyalarý, verilen komutlara göre iþleyerek standart çýktýya
