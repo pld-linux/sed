@@ -22,6 +22,7 @@ Source0:	ftp://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
+Patch1:		%{name}-tests.patch
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.8
 BuildRequires:	gettext-devel
@@ -96,13 +97,13 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal} -I config
 %{__autoconf}
 %{__automake}
 %configure
-
 %{__make}
 
 %{?with_tests: %{__make} check }
