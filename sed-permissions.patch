@@ -1,0 +1,25 @@
+--- sed-4.1/sed/execute.c.org	2004-07-04 13:35:50.134524976 +0000
++++ sed-4.1/sed/execute.c	2004-07-04 13:36:46.591942144 +0000
+@@ -656,7 +656,6 @@
+ 
+   if (in_place_extension)
+     {
+-      int output_fd;
+       char *tmpdir = ck_strdup(name), *p;
+       struct stat st;
+ 
+@@ -672,11 +671,11 @@
+ 
+       fstat (fileno (input->fp), &st);
+ #ifdef HAVE_FCHMOD
+-      fchmod (output_fd, st.st_mode);
++      fchmod (fileno(output_file.fp), st.st_mode);
+ #endif
+ #ifdef HAVE_FCHOWN
+-      if (fchown (output_fd, st.st_uid, st.st_gid) == -1)
+-        fchown (output_fd, -1, st.st_gid);
++      if (fchown (fileno(output_file.fp), st.st_uid, st.st_gid) == -1)
++        fchown (fileno(output_file.fp), -1, st.st_gid);
+ #endif
+ 
+       output_file.missing_newline = false;
