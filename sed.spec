@@ -78,10 +78,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /bin/*
 %{_mandir}/man1/*
 %{_infodir}/sed.info*
-
-%changelog
-* Thu Jun 17 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.02-7]
-- based on RH spec,
-- spec rewrited by PLD team,
-- pl translation Marcin Korzonek <mkorz@shadow.eu.org>.
