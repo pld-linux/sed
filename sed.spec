@@ -61,11 +61,11 @@ gzip -9nf $RPM_BUILD_ROOT/usr/{info/*info*,man/man1/*} \
 	testsuite/*
 
 %post
-/sbin/install-info /usr/info/sed.info.gz /etc/info-dir
+/sbin/install-info %{_infodir}/sed.info.gz /etc/info-dir
 
 %preun
 if [ "$1" = "0" ]; then
-	/sbin/install-info --delete /usr/info/sed.info.gz /etc/info-dir
+	/sbin/install-info --delete %{_infodir}/sed.info.gz /etc/info-dir
 fi
 
 %clean
@@ -75,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root)
 %doc *.gz
 %attr(755,root,root) /bin/sed 
-/usr/man/man1/*
-/usr/info/sed.info*
+%{_mandir}/man1/*
+%{_infodir}/sed.info*
 
 %changelog
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
