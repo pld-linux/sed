@@ -5,10 +5,11 @@ Summary(pl): Edytor strumienowy GNU
 Summary(tr): GNU dosya iþleme aracý
 Name:        sed
 Version:     3.02
-Release:     2
+Release:     3
 Copyright:   GPL
 Group:       Utilities/Text
 Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
+Patch:       sed.patch
 Prereq:      /sbin/install-info
 Buildroot:   /tmp/%{name}-%{version}-root
 
@@ -35,6 +36,7 @@ yazmakta kullanýlýr.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" ./configure \
@@ -65,6 +67,10 @@ rm -rf $RPM_BUILD_ROOT
 /usr/info/sed.info*
 
 %changelog
+* Sun Nov 15 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.02-3]
+- fixed dc.sed script witch have incorrect patch to sed (must be /bin/sed).
+
 * Mon Oct 12 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.02-2]
 - changed passing way LDFLAGS (as a configure enviroment variable).
