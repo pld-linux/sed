@@ -9,8 +9,9 @@ Release:	5
 Copyright:	GPL
 Group:		Utilities/Text
 Group(pl):	Narzêdzia/Tekst
-Source:		ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
-Patch:		sed.patch
+Source:		ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
+Patch0:		sed.patch
+Patch1:		sed-info.patch
 Prereq:		/sbin/install-info
 Buildroot:	/tmp/%{name}-%{version}-root
 
@@ -38,9 +39,11 @@ yazmakta kullanýlýr.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" ./configure \
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+./configure \
 	--prefix=/usr \
 	--exec-prefix=/
 make
@@ -54,21 +57,19 @@ make prefix=$RPM_BUILD_ROOT/usr exec_prefix=$RPM_BUILD_ROOT/ install
 strip $RPM_BUILD_ROOT/bin/*
 
 gzip -9nf $RPM_BUILD_ROOT/usr/{info/*info*,man/man1/*} \
-     ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed testsuite
+	ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
+	testsuite/*
 
+%post
+/sbin/install-info /usr/info/sed.info.gz /etc/info-dir
+
+%preun
+if [ "$1" = "0" ]; then
+	/sbin/install-info --delete /usr/info/sed.info.gz /etc/info-dir
+fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%post
-/sbin/install-info /usr/info/sed.info.gz /etc/info-dir \
-	--entry \
-	"* sed: (sed).                                   Stream EDitor."
-
-%preun
-if [ $1 = 0 ]; then
-	/sbin/install-info --delete /usr/info/sed.info.gz /etc/info-dir
-fi
 
 %files
 %defattr(644,root,root)
@@ -78,8 +79,11 @@ fi
 /usr/info/sed.info*
 
 %changelog
-* Mon Apr 12 1999 Micha³ Kuratczyk <kura@pld.org.pl>
+* Wed Apr 14 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.02-5]
+- standarized {un}registering info pages (added sed-info.patch).
+
+* Mon Apr 12 1999 Micha³ Kuratczyk <kura@pld.org.pl>
 - added Group(pl)
 - removed man group from man pages
 - added gzipping documentation
