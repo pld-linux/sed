@@ -5,7 +5,7 @@ Summary(pl):	Edytor GNU strumienia tekstu
 Summary(tr):	GNU dosya iþleme aracý
 Name:		sed
 Version:	3.02
-Release:	8
+Release:	9
 Copyright:	GPL
 Group:		Utilities/Text
 Group(pl):	Narzêdzia/Tekst
@@ -72,7 +72,7 @@ gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*info*,%{_mandir}/man1/*} \
 %post
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%preun
+%postun
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
