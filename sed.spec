@@ -5,13 +5,14 @@ Summary(pl):	Edytor GNU strumienia tekstu
 Summary(tr):	GNU dosya iþleme aracý
 Name:		sed
 Version:	3.02
-Release:	11
+Release:	12
 License:	GPL
 Group:		Applications/Text
 Group(de):	Applikationen/Text
 Group(fr):	Utilitaires/Texte
 Group(pl):	Aplikacje/Tekst
 Source0:	ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
+Source1:	%{name}-non-english-man-pages.tar.bz2
 Patch0:		%{name}.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-autoconf_fix.patch
@@ -73,6 +74,8 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+
 gzip -9nf ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
 	testsuite/*
 
@@ -90,4 +93,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
+%lang(de) %{_mandir}/de/man1/*
+%lang(fi) %{_mandir}/fi/man1/*
+%lang(hu) %{_mandir}/hu/man1/*
+%lang(ja) %{_mandir}/ja/man1/*
+%lang(pl) %{_mandir}/pl/man1/*
 %{_infodir}/sed.info*
