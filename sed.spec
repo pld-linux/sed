@@ -13,7 +13,7 @@ Summary(ru):	Потоковый редактор текста GNU
 Summary(tr):	GNU dosya iЧleme aracЩ
 Summary(uk):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	4.0.6
+Version:	4.0.7
 Release:	1
 License:	GPL
 Group:		Applications/Text
