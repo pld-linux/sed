@@ -1,11 +1,11 @@
-Summary:	GNU Stream Editor
-Summary(de):	GNU Stream Editor
+Summary:	A GNU stream text editor
+Summary(de):	GNU Stream-Text Editor
 Summary(fr):	Éditeur de flot de GNU
-Summary(pl):	Edytor strumienowy GNU
+Summary(pl):	Edytor GNU strumienia tekstu
 Summary(tr):	GNU dosya iþleme aracý
 Name:		sed
 Version:	3.02
-Release:	7
+Release:	8
 Copyright:	GPL
 Group:		Utilities/Text
 Group(pl):	Narzêdzia/Tekst
@@ -19,20 +19,28 @@ Buildroot:	/tmp/%{name}-%{version}-root
 %define _bindir /bin
 
 %description
-Sed copies the named files (standard input default) to the standard output, 
-edited according to a script of commands.
+The sed (Stream EDitor) editor is a stream or batch (non-interactive)
+editor. Sed takes text as input, performs an operation or set of operations
+on the text and outputs the modified text.  The operations that sed performs
+(substitutions, deletions, insertions, etc.) can be specified in a script
+file or from the command line.
 
 %description -l de
-Sed kopiert die genannten Dateien (Standardeingabe-Einstellung) nach
-Bearbeitung anhand eines Befehlsskripts auf die Standardausgabe.  
+sed (Stream EDitor) ist ein Stream- oder Batch- (nicht-interaktiver) Editor.
+Sed nimmt als Eingabe einen Text, führt darauf Operationen aus, und gibt
+einen veränderten Text aus. Die Operationen, die sed ausführt (Ersetzen,
+Löschen, Einfügen, usw.) können über eine Skriptdatei oder über die
+Kommandozeile angegeben werden.
 
 %description -l fr
 sed copie les fichiers indiqués (l'entrée standard par défaut), modifiés en 
 fonction d'un script de commandes, vers la sortie standard.
 
 %description -l pl
-Sed kopiuje podane pliki (domy¶lnie ze standardowego wej¶cia) na standardowe 
-wyj¶cie, edytuj±c je wed³ug poleceñ skryptu. 
+Sed (Stream EDitor) jest edytorem strumieni lub wsadowym (nieinteraktywnym)
+edytorem. Sed pobiera pobiera tekst na wej¶ciu, przetwarza go wed³ug zestawu
+operacji i oddaje na wyj¶ciu przetworzony tekst. Operacje wykonywane z
+u¿yciem seda moga byæ wyspecyfikowane w postaci skryptu lub z linii poleceñ.
 
 %description -l tr
 Sed, belirtilen dosyalarý, verilen komutlara göre iþleyerek standart çýktýya
