@@ -1,17 +1,18 @@
-Summary:     GNU Stream Editor
-Summary(de): GNU Stream Editor
-Summary(fr): Éditeur de flot de GNU
-Summary(pl): Edytor strumienowy GNU
-Summary(tr): GNU dosya iþleme aracý
-Name:        sed
-Version:     3.02
-Release:     4
-Copyright:   GPL
-Group:       Utilities/Text
-Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
-Patch:       sed.patch
-Prereq:      /sbin/install-info
-Buildroot:   /tmp/%{name}-%{version}-root
+Summary:	GNU Stream Editor
+Summary(de):	GNU Stream Editor
+Summary(fr):	Éditeur de flot de GNU
+Summary(pl):	Edytor strumienowy GNU
+Summary(tr):	GNU dosya iþleme aracý
+Name:		sed
+Version:	3.02
+Release:	5
+Copyright:	GPL
+Group:		Utilities/Text
+Group(pl):	Narzêdzia/Tekst
+Source:		ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
+Patch:		sed.patch
+Prereq:		/sbin/install-info
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 Sed copies the named files (standard input default) to the standard output, 
@@ -50,7 +51,11 @@ install -d $RPM_BUILD_ROOT/bin
 
 make prefix=$RPM_BUILD_ROOT/usr exec_prefix=$RPM_BUILD_ROOT/ install
 
-gzip -9nf $RPM_BUILD_ROOT/usr/{info/*info*,man/man1/*}
+strip $RPM_BUILD_ROOT/bin/*
+
+gzip -9nf $RPM_BUILD_ROOT/usr/{info/*info*,man/man1/*} \
+     ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed testsuite
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -66,13 +71,20 @@ if [ $1 = 0 ]; then
 fi
 
 %files
-%defattr(644, root, root)
-%doc ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed testsuite
-%attr(755, root, root) /bin/sed 
-%attr(644, root,  man) /usr/man/man1/*
+%defattr(644,root,root)
+%doc *.gz
+%attr(755,root,root) /bin/sed 
+/usr/man/man1/*
 /usr/info/sed.info*
 
 %changelog
+* Mon Apr 12 1999 Micha³ Kuratczyk <kura@pld.org.pl>
+  [3.02-5]
+- added Group(pl)
+- removed man group from man pages
+- added gzipping documentation
+- added stripping binaries
+
 * Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.02-4]
 - standarized {un}registering info pages,
