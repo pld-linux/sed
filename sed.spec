@@ -24,11 +24,12 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-tests.patch
-BuildRequires:	autoconf
+Patch2:		%{name}-pl.po-update.patch
+BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.8
-BuildRequires:	gettext-devel
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	gettext-devel >= 0.11
 Obsoletes:	ssed
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
 
@@ -99,6 +100,7 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__aclocal} -I config
