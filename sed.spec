@@ -16,8 +16,7 @@ Patch2:		%{name}-autoconf_fix.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	ssed
-Provides:       sed
+Obsoletes:	sed
 
 %define		_bindir		/bin
 
