@@ -1,3 +1,4 @@
+# TODO: update pl.po (wait for GNU TP?)
 #
 # Conditional build:
 %bcond_without	tests	# do not perform "make check"
@@ -102,11 +103,12 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 %build
 %{__aclocal} -I config
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make}
 
-%{?with_tests: %{__make} check }
+%{?with_tests: %{__make} check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
