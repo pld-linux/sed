@@ -24,7 +24,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-tests.patch
 BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1.8
+BuildRequires:	automake >= 1:1.8
 BuildRequires:	gettext-devel >= 0.11
 BuildRequires:	texinfo
 Obsoletes:	ssed
