@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _without_tests	- do not perform "make check"
+%bcond_without	tests	# do not perform "make check"
 #
 Summary:	A GNU stream text editor
 Summary(de):	GNU Stream-Text Editor
@@ -13,16 +13,15 @@ Summary(ru):	Потоковый редактор текста GNU
 Summary(tr):	GNU dosya iЧleme aracЩ
 Summary(uk):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	4.0.8
-Release:	2
+Version:	4.0.9
+Release:	1
 License:	GPL
 Group:		Applications/Text
 Source0:	ftp://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
-# Source0-md5:	fb7fa2a7336afc358012763b292e2124
+# Source0-md5:	d8fb554bc6577aaedd39b94b3cb3df70
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-pl.po.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -97,7 +96,6 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal} -I config
@@ -107,7 +105,7 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 
 %{__make}
 
-%{!?_without_tests: %{__make} check }
+%{?with_tests: %{__make} check }
 
 %install
 rm -rf $RPM_BUILD_ROOT
