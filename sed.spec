@@ -6,45 +6,48 @@ Summary(tr):	GNU dosya iþleme aracý
 Name:		sed
 Version:	3.02
 Release:	9
-Copyright:	GPL
+License:	GPL
 Group:		Utilities/Text
 Group(pl):	Narzêdzia/Tekst
-Source:		ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
-Patch0:		sed.patch
-Patch1:		sed-info.patch
-Patch2:		sed-autoconf_fix.patch
+Group(fr):	Utilitaires/Texte
+Source0:	ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
+Patch0:		%{name}.patch
+Patch1:		%{name}-info.patch
+Patch2:		%{name}-autoconf_fix.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define _bindir /bin
+%define		_bindir		/bin
 
 %description
 The sed (Stream EDitor) editor is a stream or batch (non-interactive)
-editor. Sed takes text as input, performs an operation or set of operations
-on the text and outputs the modified text.  The operations that sed performs
-(substitutions, deletions, insertions, etc.) can be specified in a script
-file or from the command line.
+editor. Sed takes text as input, performs an operation or set of
+operations on the text and outputs the modified text. The operations
+that sed performs (substitutions, deletions, insertions, etc.) can be
+specified in a script file or from the command line.
 
 %description -l de
-sed (Stream EDitor) ist ein Stream- oder Batch- (nicht-interaktiver) Editor.
-Sed nimmt als Eingabe einen Text, führt darauf Operationen aus, und gibt
-einen veränderten Text aus. Die Operationen, die sed ausführt (Ersetzen,
-Löschen, Einfügen, usw.) können über eine Skriptdatei oder über die
-Kommandozeile angegeben werden.
+sed (Stream EDitor) ist ein Stream- oder Batch- (nicht-interaktiver)
+Editor. Sed nimmt als Eingabe einen Text, führt darauf Operationen
+aus, und gibt einen veränderten Text aus. Die Operationen, die sed
+ausführt (Ersetzen, Löschen, Einfügen, usw.) können über eine
+Skriptdatei oder über die Kommandozeile angegeben werden.
 
 %description -l fr
-sed copie les fichiers indiqués (l'entrée standard par défaut), modifiés en 
-fonction d'un script de commandes, vers la sortie standard.
+sed copie les fichiers indiqués (l'entrée standard par défaut),
+modifiés en fonction d'un script de commandes, vers la sortie
+standard.
 
 %description -l pl
-Sed (Stream EDitor) jest edytorem strumieni lub wsadowym (nieinteraktywnym)
-edytorem. Sed pobiera tekst na wej¶ciu, przetwarza go wed³ug zestawu
-operacji i oddaje na wyj¶ciu przetworzony tekst. Operacje, które ma
-wykonywaæ, mog± byæ zapisane w postaci skryptu lub podane w linii poleceñ.
+Sed (Stream EDitor) jest edytorem strumieni lub wsadowym
+(nieinteraktywnym) edytorem. Sed pobiera tekst na wej¶ciu, przetwarza
+go wed³ug zestawu operacji i oddaje na wyj¶ciu przetworzony tekst.
+Operacje, które ma wykonywaæ, mog± byæ zapisane w postaci skryptu lub
+podane w linii poleceñ.
 
 %description -l tr
-Sed, belirtilen dosyalarý, verilen komutlara göre iþleyerek standart çýktýya
-kopyalar. Genellikle, metin dosyalarýnda bir katarýn yerine baþka bir katar
-yazmakta kullanýlýr.
+Sed, belirtilen dosyalarý, verilen komutlara göre iþleyerek standart
+çýktýya kopyalar. Genellikle, metin dosyalarýnda bir katarýn yerine
+baþka bir katar yazmakta kullanýlýr.
 
 %prep
 %setup -q
@@ -53,6 +56,7 @@ yazmakta kullanýlýr.
 %patch2 -p1
 
 %build
+LDFLAGS="-s"; export LDFLAGS
 automake
 autoconf
 %configure
@@ -61,9 +65,9 @@ autoconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/bin
+install -d $RPM_BUILD_ROOT%{_bindir}
 
-%{__make} install-strip DESTDIR=$RPM_BUILD_ROOT
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*info*,%{_mandir}/man1/*} \
 	ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
@@ -80,6 +84,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc *.gz
-%attr(755,root,root) /bin/*
+%attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %{_infodir}/sed.info*
