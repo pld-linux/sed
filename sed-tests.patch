@@ -1,0 +1,12 @@
+diff -urN aa/sed-4.1/testsuite/Makefile.tests sed-4.1/testsuite/Makefile.tests
+--- aa/sed-4.1/testsuite/Makefile.tests	2004-01-20 23:06:16.000000000 +0100
++++ sed-4.1/testsuite/Makefile.tests	2004-06-16 20:36:54.662311376 +0200
+@@ -95,7 +95,7 @@
+ 
+ version::
+ 	sed 's^@'VERSION'@^$(VERSION)^' $(srcdir)/version.gin > $@.good 
+-	$(SED) --version > $@.out 2>&1
++	LC_ALL=C $(SED) --version > $@.out 2>&1
+ 	$(CMP) $@.good $@.out 
+ 	@$(RM) $@.good $@.out
+ 

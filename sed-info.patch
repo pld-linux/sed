@@ -1,14 +1,11 @@
-diff -Nru sed-3.02/doc/sed.texi sed-3.02.new/doc/sed.texi
---- sed-3.02/doc/sed.texi	Mon Jun 29 01:01:51 1998
-+++ sed-3.02.new/doc/sed.texi	Wed Apr 14 18:29:35 1999
-@@ -24,8 +24,9 @@
- @syncodeindex op fn
- 
- @ifinfo
+--- sed-4.0.5/doc/config.texi.orig	Thu Dec 12 20:05:56 2002
++++ sed-4.0.5/doc/config.texi	Sat Jan  4 23:14:46 2003
+@@ -1,6 +1,6 @@
+-@dircategory Text creation and manipulation
 +@dircategory File utilities:
  @direntry
 -* sed: (sed).                   Stream EDitor.
 +* sed: (sed).				Stream EDitor
+ 
  @end direntry
- This file documents @sc{sed}, a stream editor.
  
