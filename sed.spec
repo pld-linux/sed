@@ -57,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/install-info /usr/info/sed.info.gz /etc/info-dir \
-	--enrtry \
+	--entry \
 	"* sed: (sed).                                   Stream EDitor."
 
 %preun
