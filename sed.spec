@@ -12,8 +12,11 @@ Group(pl):	Narzêdzia/Tekst
 Source:		ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
 Patch0:		sed.patch
 Patch1:		sed-info.patch
+Patch2:		sed-autoconf_fix.patch
 Prereq:		/sbin/install-info
 Buildroot:	/tmp/%{name}-%{version}-root
+
+%define _bindir /bin
 
 %description
 Sed copies the named files (standard input default) to the standard output, 
@@ -40,9 +43,12 @@ yazmakta kullanýlýr.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-autoconf && %configure
+automake
+autoconf
+%configure
 
 make
 
@@ -50,16 +56,11 @@ make
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/bin
 
-make \
-    bindir=$RPM_BUILD_ROOT/bin \
-    mandir=$RPM_BUILD_ROOT%{_mandir} \
-    infodir=$RPM_BUILD_ROOT%{_infodir} \
-    install install-strip
+make install-strip DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf $RPM_BUILD_ROOT%{_datadir}/{info/*info*,man/man1/*} \
+gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*info*,%{_mandir}/man1/*} \
 	ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
 	testsuite/*
-
 %post
 /sbin/install-info %{_infodir}/sed.info.gz /etc/info-dir
 
@@ -79,33 +80,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_infodir}/sed.info*
 
 %changelog
-* Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.02-6]
-- recompiles on new rpm.
-
-* Wed Apr 14 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.02-5]
-- standarized {un}registering info pages (added sed-info.patch).
-
-* Mon Apr 12 1999 Micha³ Kuratczyk <kura@pld.org.pl>
-- added Group(pl)
-- removed man group from man pages
-- added gzipping documentation
-- added stripping binaries
-
-* Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.02-4]
-- standarized {un}registering info pages,
-- added gzipping man and info pages.
-
-* Sun Nov 15 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.02-3]
-- fixed dc.sed script witch have incorrect patch to sed (must be /bin/sed).
-
-* Mon Oct 12 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.02-2]
-- changed passing way LDFLAGS (as a configure enviroment variable).
-
-* Tue Sep 29 1998 Marcin Korzonek <mkorz@shadow.eu.org>
-- added pl translation,
-- added using %%{name} and %%{version} in Source.
+* Thu Jun 17 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.02-7]
+- based on RH spec,
+- spec rewrited by PLD team,
+- pl translation Marcin Korzonek <mkorz@shadow.eu.org>.
