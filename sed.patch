@@ -1,9 +1,0 @@
-diff -Nru sed-3.02/dc.sed sed-3.02.new/dc.sed
---- sed-3.02/dc.sed	Sun Jun 28 22:14:12 1998
-+++ sed-3.02.new/dc.sed	Mon Nov 16 01:10:18 1998
-@@ -1,4 +1,4 @@
--#!/usr/bin/sed -f
-+#!/bin/sed -f
- #  dc.sed - an arbitrary precision RPN calculator
- #  Created by Greg Ubben <gsu@romulus.ncsc.mil> early 1995, late 1996
- #
