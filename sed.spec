@@ -1,3 +1,7 @@
+#
+# Conditional build:
+# _without_tests	- do not perform "make check"
+#
 Summary:	A GNU stream text editor
 Summary(de):	GNU Stream-Text Editor
 Summary(es):	Editor de stream de la GNU
