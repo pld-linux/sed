@@ -5,7 +5,7 @@ Summary(pl): Edytor strumienowy GNU
 Summary(tr): GNU dosya iþleme aracý
 Name:        sed
 Version:     3.02
-Release:     3
+Release:     4
 Copyright:   GPL
 Group:       Utilities/Text
 Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
@@ -50,26 +50,37 @@ install -d $RPM_BUILD_ROOT/bin
 
 make prefix=$RPM_BUILD_ROOT/usr exec_prefix=$RPM_BUILD_ROOT/ install
 
+gzip -9nf $RPM_BUILD_ROOT/usr/{info/*info*,man/man1/*}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/install-info /usr/info/sed.info /usr/info/dir
+/sbin/install-info /usr/info/sed.info.gz /etc/info-dir \
+	--enrtry \
+	"* sed: (sed).                                   Stream EDitor."
 
 %preun
-/sbin/install-info --delete /usr/info/sed.info /usr/info/dir
+if [ $1 = 0 ]; then
+	/sbin/install-info --delete /usr/info/sed.info.gz /etc/info-dir
+fi
 
 %files
 %defattr(644, root, root)
 %doc ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed testsuite
 %attr(755, root, root) /bin/sed 
-%attr(644, root,  man) /usr/man/man1/sed.1
+%attr(644, root,  man) /usr/man/man1/*
 /usr/info/sed.info*
 
 %changelog
+* Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.02-4]
+- standarized {un}registering info pages,
+- added gzipping man and info pages.
+
 * Sun Nov 15 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.02-3]
-- fixed dc.sed script which have incorrect patch to sed (must be /bin/sed).
+- fixed dc.sed script witch have incorrect patch to sed (must be /bin/sed).
 
 * Mon Oct 12 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.02-2]
