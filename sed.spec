@@ -5,7 +5,7 @@ Summary(pl):	Edytor strumienowy GNU
 Summary(tr):	GNU dosya iþleme aracý
 Name:		sed
 Version:	3.02
-Release:	5
+Release:	6
 Copyright:	GPL
 Group:		Utilities/Text
 Group(pl):	Narzêdzia/Tekst
@@ -79,6 +79,10 @@ rm -rf $RPM_BUILD_ROOT
 /usr/info/sed.info*
 
 %changelog
+* Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.02-6]
+- recompiles on new rpm.
+
 * Wed Apr 14 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.02-5]
 - standarized {un}registering info pages (added sed-info.patch).
