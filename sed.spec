@@ -5,7 +5,7 @@ Summary(pl):	Edytor strumienowy GNU
 Summary(tr):	GNU dosya iþleme aracý
 Name:		sed
 Version:	3.02
-Release:	6
+Release:	7
 Copyright:	GPL
 Group:		Utilities/Text
 Group(pl):	Narzêdzia/Tekst
@@ -42,21 +42,21 @@ yazmakta kullanýlýr.
 %patch1 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=/usr \
-	--exec-prefix=/
+autoconf && %configure
+
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/bin
 
-make prefix=$RPM_BUILD_ROOT/usr exec_prefix=$RPM_BUILD_ROOT/ install
+make \
+    bindir=$RPM_BUILD_ROOT/bin \
+    mandir=$RPM_BUILD_ROOT%{_mandir} \
+    infodir=$RPM_BUILD_ROOT%{_infodir} \
+    install install-strip
 
-strip $RPM_BUILD_ROOT/bin/*
-
-gzip -9nf $RPM_BUILD_ROOT/usr/{info/*info*,man/man1/*} \
+gzip -9nf $RPM_BUILD_ROOT%{_datadir}/{info/*info*,man/man1/*} \
 	ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
 	testsuite/*
 
@@ -74,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root)
 %doc *.gz
-%attr(755,root,root) /bin/sed 
+%attr(755,root,root) /bin/*
 %{_mandir}/man1/*
 %{_infodir}/sed.info*
 
@@ -109,22 +109,3 @@ rm -rf $RPM_BUILD_ROOT
 * Tue Sep 29 1998 Marcin Korzonek <mkorz@shadow.eu.org>
 - added pl translation,
 - added using %%{name} and %%{version} in Source.
-
-* Tue Aug 18 1998 Jeff Johnson <jbj@redhat.com>
-- update to 3.02
-
-* Sun Jul 26 1998 Jeff Johnson <jbj@redhat.com>
-- update to 3.01
-
-* Mon Apr 27 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Thu Oct 23 1997 Donnie Barnes <djb@redhat.com>
-- removed references to the -g option from the man page that we add
-
-* Fri Oct 17 1997 Donnie Barnes <djb@redhat.com>
-- spec file cleanups
-- added BuildRoot
-
-* Mon Jun 02 1997 Erik Troan <ewt@redhat.com>
-- built against glibc
