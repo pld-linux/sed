@@ -100,8 +100,8 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 
 %build
 rm -f missing
-aclocal
-autoheader
+%{__aclocal}
+%{__autoheader}
 %{__autoconf}
 %{__automake}
 %configure
