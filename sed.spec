@@ -101,6 +101,8 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 
 %{__make}
 
+%{!?_without_tests: %{__make} check }
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_bindir}
