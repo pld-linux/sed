@@ -9,19 +9,17 @@ Summary(ru):	Потоковый редактор текста GNU
 Summary(tr):	GNU dosya iЧleme aracЩ
 Summary(uk):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	3.02
-Release:	14
+Version:	4.0.1
+Release:	1
 License:	GPL
 Group:		Applications/Text
-Source0:	ftp://prep.ai.mit.edu/pub/gnu/sed/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
 Source1:	%{name}-non-english-man-pages.tar.bz2
-Patch0:		%{name}.patch
-Patch1:		%{name}-info.patch
-Patch2:		%{name}-autoconf_fix.patch
-Patch3:		%{name}-doc.patch
-Patch4:		%{name}-ac25x.patch
+Patch0:		%{name}-info.patch
+Patch1:		%{name}-pl.po.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	ssed
 
@@ -94,14 +92,9 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
-rm -f missing
-%{__aclocal}
-%{__autoheader}
+%{__aclocal} -I config
 %{__autoconf}
 %{__automake}
 %configure
@@ -116,8 +109,7 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
-gzip -9nf ANNOUNCE AUTHORS BUGS ChangeLog NEWS README THANKS TODO dc.sed \
-	testsuite/*
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -128,9 +120,9 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %lang(de) %{_mandir}/de/man1/*

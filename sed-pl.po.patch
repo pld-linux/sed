@@ -1,0 +1,381 @@
+--- sed-4.0.1/configure.ac.orig	Mon Oct 28 08:33:29 2002
++++ sed-4.0.1/configure.ac	Mon Nov 25 23:26:20 2002
+@@ -60,7 +60,7 @@
+ AM_CONDITIONAL(TEXI2HTML_HTML, test "x$enable_html" = xtexi2html)
+ 
+ 
+-ALL_LINGUAS="ca cs da de el eo es et fi fr gl he hr hu id it ja ko nl pt_BR ru sk sl sv tr zh_CN"
++ALL_LINGUAS="ca cs da de el eo es et fi fr gl he hr hu id it ja ko nl pl pt_BR ru sk sl sv tr zh_CN"
+ AM_GNU_GETTEXT(, need-ngettext)
+ 
+ AC_CONFIG_FILES([bootstrap.sh], chmod +x bootstrap.sh)
+--- sed-4.0.1/po/pl.po.orig	Thu Jan  1 01:00:00 1970
++++ sed-4.0.1/po/pl.po	Mon Nov 25 23:24:00 2002
+@@ -0,0 +1,367 @@
++# Polish translations for sed.
++# Copyright (C) 2002 Free Software Foundation, Inc.
++# Jakub Bogusz <qboosh@pld.org.pl>, 2002.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: sed 4.0.2\n"
++"POT-Creation-Date: 2002-10-28 08:07+0100\n"
++"PO-Revision-Date: 2002-11-25 22:14+0100\n"
++"Last-Translator: Jakub Bogusz <qboosh@pld.org.pl>\n"
++"Language-Team: Polish <pl@li.org>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=ISO-8859-2\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
++"|| n%100>=20) ? 1 : 2);\n"
++  
++#: sed/compile.c:165
++msgid "Invalid use of address modifier"
++msgstr "B³êdne u¿ycie modyfikatora adresu"
++
++#: sed/compile.c:166
++msgid "Multiple `!'s"
++msgstr "Wielokrotne `!'"
++
++#: sed/compile.c:167
++msgid "Unexpected `,'"
++msgstr "Nieoczekiwany `,'"
++
++#: sed/compile.c:168
++msgid "Unexpected End-of-file"
++msgstr "Nieoczekiwany koniec pliku"
++
++#: sed/compile.c:169
++msgid "Cannot use +N or ~N as first address"
++msgstr "Nie mo¿na u¿yæ +N ani ~N jako pierwszego adresu"
++
++#: sed/compile.c:170
++msgid "Unmatched `{'"
++msgstr "Niedopasowany `{'"
++
++#: sed/compile.c:171
++msgid "Unexpected `}'"
++msgstr "Nieoczekiwany `}'"
++
++#: sed/compile.c:172
++msgid "Extra characters after command"
++msgstr "Nadmiarowe znaki po poleceniu"
++
++#: sed/compile.c:173
++msgid "Expected \\ after `a', `c' or `i'"
++msgstr "Oczekiwano \\ po `a', `c' lub `i'"
++
++#: sed/compile.c:174
++msgid "`}' doesn't want any addresses"
++msgstr "`}' nie chce ¿adnego adresu"
++
++#: sed/compile.c:175
++msgid ": doesn't want any addresses"
++msgstr ": nie chce ¿adnego adresu"
++
++#: sed/compile.c:176
++msgid "Comments don't accept any addresses"
++msgstr "Komentarze nie przyjmuj± ¿adnego adresu"
++
++#: sed/compile.c:177
++msgid "Missing command"
++msgstr "Brakuj±ce polecenie"
++
++#: sed/compile.c:178
++msgid "Command only uses one address"
++msgstr "Polecenie u¿ywa tylko jednego adresu"
++
++#: sed/compile.c:179
++msgid "Unterminated address regex"
++msgstr "Nie zakoñczone wyra¿enie regularne dla adresu"
++
++#: sed/compile.c:180
++msgid "Unterminated `s' command"
++msgstr "Nie zakoñczone polecenie `s'"
++
++#: sed/compile.c:181
++msgid "Unterminated `y' command"
++msgstr "Nie zakoñczone polecenie `y'"
++
++#: sed/compile.c:182
++msgid "Unknown option to `s'"
++msgstr "Nieznana opcja dla `s'"
++
++#: sed/compile.c:183
++msgid "multiple `p' options to `s' command"
++msgstr "wielokrotne opcje `p' dla polecenia `s'"
++
++#: sed/compile.c:184
++msgid "multiple `g' options to `s' command"
++msgstr "wielokrotne opcje `g' dla polecenia `s'"
++
++#: sed/compile.c:186
++msgid "multiple number options to `s' command"
++msgstr "wielokrotne opcje liczbowe dla polecenia `s'"
++
++#: sed/compile.c:188
++msgid "number option to `s' command may not be zero"
++msgstr "opcja liczbowa dla polecenia `s' nie mo¿e byæ zerem"
++
++#: sed/compile.c:190
++msgid "strings for y command are different lengths"
++msgstr "³añcuchy dla polecenia y s± ró¿nej d³ugo¶ci"
++
++#: sed/compile.c:233
++#, c-format
++msgid "Called savchar() with unexpected pushback (%x)"
++msgstr "Wywo³ano savchar() z nieoczekiwanym pushback (%x)"
++
++#: sed/compile.c:1319
++msgid "Unknown command:"
++msgstr "Nieznane polecenie:"
++
++#: sed/compile.c:1340
++#, c-format
++msgid "%s: file %s line %lu: %s\n"
++msgstr "%s: plik %s linia %lu: %s\n"
++
++#: sed/compile.c:1343
++#, c-format
++msgid "%s: -e expression #%lu, char %lu: %s\n"
++msgstr "%s: -e wyra¿enie #%lu, znak %lu: %s\n"
++
++#: sed/compile.c:1543
++#, c-format
++msgid "Can't find label for jump to `%s'"
++msgstr "Nie mo¿na znale¼æ etykiety, aby przeskoczyæ do `%s'"
++
++#: sed/execute.c:516
++#, c-format
++msgid "%s: can't read %s: %s\n"
++msgstr "%s: nie mo¿na odczytaæ %s: %s\n"
++
++#: sed/execute.c:722
++msgid "INTERNAL ERROR: bad address type"
++msgstr "B£¡D WEWNÊTRZNY: b³êdny typ adresu"
++
++#: sed/execute.c:1003 sed/execute.c:1183
++msgid "error in subprocess"
++msgstr "b³±d w podprocesie"
++
++#: sed/execute.c:1005
++msgid "option `e' not supported"
++msgstr "opcja `e' nie jest obs³ugiwana"
++
++#: sed/execute.c:1185
++msgid "`e' command not supported"
++msgstr "polecenie `e' nie jest obs³ugiwane"
++
++#: sed/execute.c:1415
++#, c-format
++msgid "INTERNAL ERROR: Bad cmd %c"
++msgstr "B£¡D WEWNÊTRZNY: B³êdne polecenie %c"
++
++#. XXX shouldn't this be (UCHAR_MAX+1)?
++#: lib/regcomp.c:658 sed/regex.c:47
++msgid "No previous regular expression"
++msgstr "Nie by³o poprzedniego wyra¿enia regularnego"
++
++#: sed/regex.c:48
++msgid "Cannot specify modifiers on empty regexp"
++msgstr "Nie mo¿na podaæ modyfikatorów dla pustego wyra¿enia regularnego"
++
++#: sed/regex.c:146
++#, c-format
++msgid "Invalid reference \\%d on `s' command's RHS"
++msgstr "B³êdne odniesienie \\%d po prawej stronie polecenia `s'"
++
++#: sed/sed.c:98
++msgid ""
++"  -R, --regexp-perl\n"
++"                 use Perl 5's regular expressions syntax in the script.\n"
++msgstr ""
++"  -R, --regexp-perl\n"
++"                 u¿ycie w skryptach sk³adni wyra¿eñ regularnych Perla 5\n"
++
++#: sed/sed.c:103
++#, c-format
++msgid ""
++"Usage: %s [OPTION]... {script-only-if-no-other-script} [input-file]...\n"
++"\n"
++"  -n, --quiet, --silent\n"
++"                 suppress automatic printing of pattern space\n"
++"  -e script, --expression=script\n"
++"                 add the script to the commands to be executed\n"
++"  -f script-file, --file=script-file\n"
++"                 add the contents of script-file to the commands to be executed\n"
++"  -i[suffix], --in-place[=suffix]\n"
++"                 edit files in place (makes backup if extension supplied)\n"
++"  -l N, --line-length=N\n"
++"                 specify the desired line-wrap length for the `l' command\n"
++"  -r, --regexp-extended\n"
++"                 use extended regular expressions in the script.\n"
++"%s  -s, --separate\n"
++"                 consider files as separate rather than as a single continuous\n"
++"                 long stream.\n"
++"  -u, --unbuffered\n"
++"                 load minimal amounts of data from the input files and flush\n"
++"                 the output buffers more often\n"
++"      --help     display this help and exit\n"
++"  -V, --version  output version information and exit\n"
++"\n"
++"If no -e, --expression, -f, or --file option is given, then the first\n"
++"non-option argument is taken as the sed script to interpret.  All\n"
++"remaining arguments are names of input files; if no input files are\n"
++"specified, then the standard input is read.\n"
++"\n"
++msgstr ""
++"Sk³adnia: %s [OPCJA]... {skrypt-je¶li-tylko-jeden} [plik-wej¶ciowy]...\n"
++"\n"
++"  -n, --quiet, --silent\n"
++"                 pominiêcie automatycznego wypisywania zawarto¶ci wzorca\n"
++"  -e skrypt, --expression=skrypt\n"
++"                 dodanie skryptu do poleceñ do wykonania\n"
++"  -f plik-skryptu, --file=plik-skryptu\n"
++"                 dodanie zawarto¶ci pliku-skryptu do poleceñ do wykonania\n"
++"  -i[przyrostek], --in-place[=przyrostek]\n"
++"                 edycja pliku w miejscu (z tworzeniem kopii zapasowej, je¶li\n"
++"                 podano rozszerzenie)\n"
++"  -l N, --line-length=N\n"
++"                 podanie po¿±danej d³ugo¶ci line-wrap dla polecenia `l'\n"
++"  -r, --regexp-extended\n"
++"                 u¿ycie w skrypcie rozszerzonych wyra¿eñ regularnych\n"
++"%s  -s, --separate\n"
++"                 rozwa¿anie plików jako oddzielnych zamiast ci±g³ego strumienia\n"
++"  -u, --unbuffered\n"
++"                 wczytywanie minimalnych ilo¶ci danych z wej¶cia i czêstsze\n"
++"                 opró¿nianie buforów wyj¶ciowych\n"
++"      --help     wy¶wietlenie tego opisu i zakoñczenie\n"
++"  -V, --version  wy¶wietlenie informacji o wersji i zakoñczenie\n"
++"\n"
++"Je¶li nie podano opcji -e, --expression, -f ani --file, to pierwszy argument\n"
++"nie bêd±cy opcj± jest przyjmowany jako skrypt seda do zinterpretowania.\n"
++"Wszystkie pozosta³e argumenty s± nazwami plików wej¶ciowych; je¶li nie podano\n"
++"plików wej¶ciowych, czytane jest standardowe wej¶cie.\n"
++"\n"
++
++#: sed/sed.c:132
++#, c-format
++msgid ""
++"E-mail bug reports to: %s .\n"
++"Be sure to include the word ``%s'' somewhere in the ``Subject:'' field.\n"
++msgstr ""
++"Proszê raportowaæ b³êdy do: %s .\n"
++"W polu ``Subject:'' musi znale¼æ siê s³owo ``%s''.\n"
++
++#: sed/sed.c:255
++#, c-format
++msgid "super-sed version %s\n"
++msgstr "super-sed wersja %s\n"
++
++#: sed/sed.c:256
++msgid ""
++"based on GNU sed version 3.02.80\n"
++"\n"
++msgstr ""
++"oparty na GNU sed w wersji 3.02.80\n"
++"\n"
++
++#: sed/sed.c:258
++#, c-format
++msgid "GNU sed version %s\n"
++msgstr "GNU sed wersja %s\n"
++
++#: sed/sed.c:260
++#, c-format
++msgid ""
++"%s\n"
++"This is free software; see the source for copying conditions.  There is NO\n"
++"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE,\n"
++"to the extent permitted by law.\n"
++msgstr ""
++"%s\n"
++"Ten program jest darmowy; warunki kopiowania s± opisane w ¼ród³ach.\n"
++"Autorzy nie daj± ¯ADNYCH gwarancji, w tym równie¿ gwarancji PRZYDATNO¦CI\n"
++"DO SPRZEDA¯Y LUB DO KONKRETNYCH CELÓW, w granicach dopuszczanych przez prawo.\n"
++
++#: lib/utils.c:131
++#, c-format
++msgid "Couldn't open file %s: %s"
++msgstr "Nie mo¿na otworzyæ pliku %s: %s"
++
++#: lib/utils.c:161
++#, c-format
++msgid "couldn't write %d item to %s: %s"
++msgid_plural "couldn't write %d items to %s: %s"
++msgstr[0] "nie mo¿na zapisaæ %d elementu do %s: %s"
++msgstr[1] "nie mo¿na zapisaæ %d elementów do %s: %s"
++msgstr[2] "nie mo¿na zapisaæ %d elementów do %s: %s"
++
++#: lib/utils.c:176
++#, c-format
++msgid "read error on %s: %s"
++msgstr "b³±d odczytu przy %s: %s"
++
++#: lib/regcomp.c:179
++msgid "Success"
++msgstr "Sukces"
++
++#: lib/regcomp.c:182
++msgid "No match"
++msgstr "Brak dopasowania"
++
++#: lib/regcomp.c:185
++msgid "Invalid regular expression"
++msgstr "B³êdne wyra¿enie regularne"
++
++#: lib/regcomp.c:188
++msgid "Invalid collation character"
++msgstr "B³êdny znak scalaj±cy"
++
++#: lib/regcomp.c:191
++msgid "Invalid character class name"
++msgstr "B³êdna nazwa klasy znaków"
++
++#: lib/regcomp.c:194
++msgid "Trailing backslash"
++msgstr "Backslash na koñcu"
++
++#: lib/regcomp.c:197
++msgid "Invalid back reference"
++msgstr "B³êdne odniesienie wsteczne"
++
++#: lib/regcomp.c:200
++msgid "Unmatched [ or [^"
++msgstr "Niedopasowany [ lub [^"
++
++#: lib/regcomp.c:203
++msgid "Unmatched ( or \\("
++msgstr "Niedopasowany ( lub \\("
++
++#: lib/regcomp.c:206
++msgid "Unmatched \\{"
++msgstr "Niedopasowany \\{"
++
++#: lib/regcomp.c:209
++msgid "Invalid content of \\{\\}"
++msgstr "B³êdna zawarto¶æ \\{\\}"
++
++#: lib/regcomp.c:212
++msgid "Invalid range end"
++msgstr "B³êdny koniec przedzia³u"
++
++#: lib/regcomp.c:215
++msgid "Memory exhausted"
++msgstr "Pamiêæ wyczerpana"
++
++#: lib/regcomp.c:218
++msgid "Invalid preceding regular expression"
++msgstr "B³êdne poprzedzaj±ce wyra¿enie regularne"
++
++#: lib/regcomp.c:221
++msgid "Premature end of regular expression"
++msgstr "Przedwczesny koniec wyra¿enia regularnego"
++
++#: lib/regcomp.c:224
++msgid "Regular expression too big"
++msgstr "Wyra¿enie regularne zbyt du¿e"
++
++#: lib/regcomp.c:227
++msgid "Unmatched ) or \\)"
++msgstr "Niedopasowany ) lub \\)"
