@@ -2,6 +2,7 @@ Summary:	A GNU stream text editor
 Summary(de):	GNU Stream-Text Editor
 Summary(es):	Editor de stream de la GNU
 Summary(fr):	Éditeur de flot de GNU
+Summary(ja):	GNU ¥¹¥È¥ê¡¼¥à¥Æ¥­¥¹¥È¥¨¥Ç¥£¥¿¡¼
 Summary(pl):	Edytor GNU strumienia tekstu
 Summary(pt_BR):	Editor de stream da GNU
 Summary(ru):	ğÏÔÏËÏ×ÙÊ ÒÅÄÁËÔÏÒ ÔÅËÓÔÁ GNU
@@ -48,6 +49,14 @@ de comandos.
 sed copie les fichiers indiqués (l'entrée standard par défaut),
 modifiés en fonction d'un script de commandes, vers la sortie
 standard.
+
+%description -l ja
+sed (Stream Editor)
+¥¨¥Ç¥£¥¿¡¼¤Ï¥¹¥È¥ê¡¼¥à¤Ş¤¿¤Ï¥Ğ¥Ã¥Á(Èó¥¤¥ó¥¿¥é¥¯¥Æ¥£¥Ö)
+¥¨¥Ç¥£¥¿¡¼¤Ç¤¹¡£sed ¤ÏÆşÎÏ¤È¤·¤Æ¥Æ¥­¥¹¥È¤òÍÑ¤¤¡¢¥Æ¥­¥¹¥È¤ÎÁàºî¤Ş¤¿¤Ï
+Áàºî¤Î¥»¥Ã¥È¤ò¥Æ¥­¥¹¥È¤È¤ËÂĞ¤·¤Æ¹Ô¤¤¡¢½¤Àµ¤µ¤ì¤¿¥Æ¥­¥¹¥È¤ò½ĞÎÏ¤·¤Ş¤¹¡£
+sed ¤¬¹Ô¤¦Áàºî (ÃÖ´¹¡¢ºï½ü¡¢ÁŞÆş¡¢¤½¤ÎÂ¾) ¤Ï¥¹¥¯¥ê¥×¥È¥Õ¥¡¥¤¥ë¤«¡¢
+¥³¥Ş¥ó¥É¥é¥¤¥ó¤«¤é»ØÄê¤µ¤ì¤Ş¤¹¡£
 
 %description -l pl
 Sed (Stream EDitor) jest edytorem strumieni lub wsadowym
