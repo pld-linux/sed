@@ -8,7 +8,7 @@ diff -Nru sed-3.02/doc/sed.texi sed-3.02.new/doc/sed.texi
 +@dircategory File utilities:
  @direntry
 -* sed: (sed).                   Stream EDitor.
-+* sed: (sed)				Stream EDitor
++* sed: (sed).				Stream EDitor
  @end direntry
  This file documents @sc{sed}, a stream editor.
  
