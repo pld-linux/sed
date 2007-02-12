@@ -3,15 +3,15 @@
 %bcond_without	tests	# do not perform "make check"
 #
 Summary:	A GNU stream text editor
-Summary(de.UTF-8):   GNU Stream-Text Editor
-Summary(es.UTF-8):   Editor de stream de la GNU
-Summary(fr.UTF-8):   Éditeur de flot de GNU
-Summary(ja.UTF-8):   GNU ストリームテキストエディター
-Summary(pl.UTF-8):   Edytor GNU strumienia tekstu
-Summary(pt_BR.UTF-8):   Editor de stream da GNU
-Summary(ru.UTF-8):   Потоковый редактор текста GNU
-Summary(tr.UTF-8):   GNU dosya işleme aracı
-Summary(uk.UTF-8):   Потоковий редактор тексту GNU
+Summary(de.UTF-8):	GNU Stream-Text Editor
+Summary(es.UTF-8):	Editor de stream de la GNU
+Summary(fr.UTF-8):	Éditeur de flot de GNU
+Summary(ja.UTF-8):	GNU ストリームテキストエディター
+Summary(pl.UTF-8):	Edytor GNU strumienia tekstu
+Summary(pt_BR.UTF-8):	Editor de stream da GNU
+Summary(ru.UTF-8):	Потоковый редактор текста GNU
+Summary(tr.UTF-8):	GNU dosya işleme aracı
+Summary(uk.UTF-8):	Потоковий редактор тексту GNU
 Name:		sed
 Version:	4.1.5
 Release:	2
