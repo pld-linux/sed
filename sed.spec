@@ -3,15 +3,15 @@
 %bcond_without	tests	# do not perform "make check"
 #
 Summary:	A GNU stream text editor
-Summary(de):	GNU Stream-Text Editor
-Summary(es):	Editor de stream de la GNU
-Summary(fr):	иditeur de flot de GNU
-Summary(ja):	GNU ╔╧╔х╔Й║╪╔Ю╔ф╔╜╔╧╔х╔╗╔г╔ё╔©║╪
-Summary(pl):	Edytor GNU strumienia tekstu
-Summary(pt_BR):	Editor de stream da GNU
-Summary(ru):	Потоковый редактор текста GNU
-Summary(tr):	GNU dosya iЧleme aracЩ
-Summary(uk):	Потоковий редактор тексту GNU
+Summary(de.UTF-8):   GNU Stream-Text Editor
+Summary(es.UTF-8):   Editor de stream de la GNU
+Summary(fr.UTF-8):   ц┴diteur de flot de GNU
+Summary(ja.UTF-8):   GNU Ц┌╧Ц┐┬Ц┐╙Ц┐╪Ц┐═Ц┐├Ц┌╜Ц┌╧Ц┐┬Ц┌╗Ц┐┤Ц┌ёЦ┌©Ц┐╪
+Summary(pl.UTF-8):   Edytor GNU strumienia tekstu
+Summary(pt_BR.UTF-8):   Editor de stream da GNU
+Summary(ru.UTF-8):   п÷п╬я┌п╬п╨п╬п╡я▀п╧ я─п╣п╢п╟п╨я┌п╬я─ я┌п╣п╨я│я┌п╟ GNU
+Summary(tr.UTF-8):   GNU dosya iе÷leme aracд╠
+Summary(uk.UTF-8):   п÷п╬я┌п╬п╨п╬п╡п╦п╧ я─п╣п╢п╟п╨я┌п╬я─ я┌п╣п╨я│я┌я┐ GNU
 Name:		sed
 Version:	4.1.5
 Release:	2
@@ -39,61 +39,61 @@ operations on the text and outputs the modified text. The operations
 that sed performs (substitutions, deletions, insertions, etc.) can be
 specified in a script file or from the command line.
 
-%description -l de
+%description -l de.UTF-8
 sed (Stream EDitor) ist ein Stream- oder Batch- (nicht-interaktiver)
-Editor. Sed nimmt als Eingabe einen Text, fЭhrt darauf Operationen
-aus, und gibt einen verДnderten Text aus. Die Operationen, die sed
-ausfЭhrt (Ersetzen, LЖschen, EinfЭgen, usw.) kЖnnen Эber eine
-Skriptdatei oder Эber die Kommandozeile angegeben werden.
+Editor. Sed nimmt als Eingabe einen Text, fц╪hrt darauf Operationen
+aus, und gibt einen verц╓nderten Text aus. Die Operationen, die sed
+ausfц╪hrt (Ersetzen, Lц╤schen, Einfц╪gen, usw.) kц╤nnen ц╪ber eine
+Skriptdatei oder ц╪ber die Kommandozeile angegeben werden.
 
-%description -l es
-Sed copia los archivos nombrados (archivos de la entrada padrСn por
-por defecto) para la salida padrСn, editado de acuerdo con un script
+%description -l es.UTF-8
+Sed copia los archivos nombrados (archivos de la entrada padrцЁn por
+por defecto) para la salida padrцЁn, editado de acuerdo con un script
 de comandos.
 
-%description -l fr
-sed copie les fichiers indiquИs (l'entrИe standard par dИfaut),
-modifiИs en fonction d'un script de commandes, vers la sortie
+%description -l fr.UTF-8
+sed copie les fichiers indiquц╘s (l'entrц╘e standard par dц╘faut),
+modifiц╘s en fonction d'un script de commandes, vers la sortie
 standard.
 
-%description -l ja
+%description -l ja.UTF-8
 sed (Stream Editor)
-╔╗╔г╔ё╔©║╪╓о╔╧╔х╔Й║╪╔Ю╓ч╓©╓о╔п╔ц╔а(хС╔╓╔С╔©╔И╔╞╔ф╔ё╔ж)
-╔╗╔г╔ё╔©║╪╓г╓╧║ёsed ╓офЧно╓х╓╥╓ф╔ф╔╜╔╧╔х╓Рмя╓╓║╒╔ф╔╜╔╧╔х╓наЮ╨Н╓ч╓©╓о
-аЮ╨Н╓н╔╩╔ц╔х╓Р╔ф╔╜╔╧╔х╓х╓кбп╓╥╓ф╧т╓╓║╒╫╓ю╣╓╣╓Л╓©╔ф╔╜╔╧╔х╓Р╫пно╓╥╓ч╓╧║ё
-sed ╓╛╧т╓╕аЮ╨Н (цж╢╧║╒╨О╫Э║╒ачфЧ║╒╓╫╓нб╬) ╓о╔╧╔╞╔Й╔в╔х╔у╔║╔╓╔К╓╚║╒
-╔Ё╔ч╔С╔и╔И╔╓╔С╓╚╓И╩ьдЙ╓╣╓Л╓ч╓╧║ё
+Ц┌╗Ц┐┤Ц┌ёЦ┌©Ц┐╪Ц│╞Ц┌╧Ц┐┬Ц┐╙Ц┐╪Ц┐═Ц│╬Ц│÷Ц│╞Ц┐░Ц┐┐Ц┐│(И²·Ц┌╓Ц┐ЁЦ┌©Ц┐╘Ц┌╞Ц┐├Ц┌ёЦ┐√)
+Ц┌╗Ц┐┤Ц┌ёЦ┌©Ц┐╪Ц│╖Ц│≥Ц─┌sed Ц│╞Е┘╔Е┼⌡Ц│╗Ц│≈Ц│╕Ц┐├Ц┌╜Ц┌╧Ц┐┬Ц┌▓Г■╗Ц│└Ц─│Ц┐├Ц┌╜Ц┌╧Ц┐┬Ц│╝Ф⌠█Д╫°Ц│╬Ц│÷Ц│╞
+Ф⌠█Д╫°Ц│╝Ц┌╩Ц┐┐Ц┐┬Ц┌▓Ц┐├Ц┌╜Ц┌╧Ц┐┬Ц│╗Ц│╚Е╞╬Ц│≈Ц│╕Х║▄Ц│└Ц─│Д©╝Ф╜ёЦ│∙Ц┌▄Ц│÷Ц┐├Ц┌╜Ц┌╧Ц┐┬Ц┌▓Е┤╨Е┼⌡Ц│≈Ц│╬Ц│≥Ц─┌
+sed Ц│▄Х║▄Ц│├Ф⌠█Д╫° (Г╫╝Ф▐⌡Ц─│Е┴┼И≥╓Ц─│Ф▄©Е┘╔Ц─│Ц│²Ц│╝Д╩√) Ц│╞Ц┌╧Ц┌╞Ц┐╙Ц┐≈Ц┐┬Ц┐∙Ц┌║Ц┌╓Ц┐╚Ц│▀Ц─│
+Ц┌ЁЦ┐·Ц┐ЁЦ┐┴Ц┐╘Ц┌╓Ц┐ЁЦ│▀Ц┌┴Ф▄┤Е╝ Ц│∙Ц┌▄Ц│╬Ц│≥Ц─┌
 
-%description -l pl
+%description -l pl.UTF-8
 Sed (Stream EDitor) jest edytorem strumieni lub wsadowym
-(nieinteraktywnym) edytorem. Sed pobiera tekst na wej╤ciu, przetwarza
-go wedЁug zestawu operacji i oddaje na wyj╤ciu przetworzony tekst.
-Operacje, ktСre ma wykonywaФ, mog╠ byФ zapisane w postaci skryptu lub
-podane w linii poleceЯ.
+(nieinteraktywnym) edytorem. Sed pobiera tekst na wejе⌡ciu, przetwarza
+go wedе┌ug zestawu operacji i oddaje na wyjе⌡ciu przetworzony tekst.
+Operacje, ktцЁre ma wykonywaд┤, mogд┘ byд┤ zapisane w postaci skryptu lub
+podane w linii poleceе└.
 
-%description -l pt_BR
-O sed copia os arquivos indicados (ou a entrada padrЦo caso nЦo
-especificado) para a saМda padrЦo, editado de acordo com um roteiro de
+%description -l pt_BR.UTF-8
+O sed copia os arquivos indicados (ou a entrada padrцёo caso nцёo
+especificado) para a saц╜da padrцёo, editado de acordo com um roteiro de
 comandos.
 
-%description -l ru
-sed (Stream EDitor) - это потоковый или пакетный (не-интерактивный)
-редактор. sed исполняет операции над подаваемым ему на вход текстом и
-выдает модифицированный текст. Операции, которые sed выполняет
-(подстановки, удаления, вставки и др.) могут быть заданы в файле
-сценария или с командной строки.
+%description -l ru.UTF-8
+sed (Stream EDitor) - я█я┌п╬ п©п╬я┌п╬п╨п╬п╡я▀п╧ п╦п╩п╦ п©п╟п╨п╣я┌п╫я▀п╧ (п╫п╣-п╦п╫я┌п╣я─п╟п╨я┌п╦п╡п╫я▀п╧)
+я─п╣п╢п╟п╨я┌п╬я─. sed п╦я│п©п╬п╩п╫я▐п╣я┌ п╬п©п╣я─п╟я├п╦п╦ п╫п╟п╢ п©п╬п╢п╟п╡п╟п╣п╪я▀п╪ п╣п╪я┐ п╫п╟ п╡я┘п╬п╢ я┌п╣п╨я│я┌п╬п╪ п╦
+п╡я▀п╢п╟п╣я┌ п╪п╬п╢п╦я└п╦я├п╦я─п╬п╡п╟п╫п╫я▀п╧ я┌п╣п╨я│я┌. п·п©п╣я─п╟я├п╦п╦, п╨п╬я┌п╬я─я▀п╣ sed п╡я▀п©п╬п╩п╫я▐п╣я┌
+(п©п╬п╢я│я┌п╟п╫п╬п╡п╨п╦, я┐п╢п╟п╩п╣п╫п╦я▐, п╡я│я┌п╟п╡п╨п╦ п╦ п╢я─.) п╪п╬пЁя┐я┌ п╠я▀я┌я▄ п╥п╟п╢п╟п╫я▀ п╡ я└п╟п╧п╩п╣
+я│я├п╣п╫п╟я─п╦я▐ п╦п╩п╦ я│ п╨п╬п╪п╟п╫п╢п╫п╬п╧ я│я┌я─п╬п╨п╦.
 
-%description -l tr
-Sed, belirtilen dosyalarЩ, verilen komutlara gЖre iЧleyerek standart
-ГЩktЩya kopyalar. Genellikle, metin dosyalarЩnda bir katarЩn yerine
-baЧka bir katar yazmakta kullanЩlЩr.
+%description -l tr.UTF-8
+Sed, belirtilen dosyalarд╠, verilen komutlara gц╤re iе÷leyerek standart
+ц╖д╠ktд╠ya kopyalar. Genellikle, metin dosyalarд╠nda bir katarд╠n yerine
+baе÷ka bir katar yazmakta kullanд╠lд╠r.
 
-%description -l uk
-sed (Stream EDitor) - це потоковий чи пакетний (не-╕нтерактивний)
-редактор. sed викону╓ операц╕╖ над текстом, що пода╓ться йому на вх╕д
-та виводить модиф╕кований текст. Операц╕╖, як╕ sed викону╓
-(п╕дстановки, видалення, вставки та ╕н.) можуть бути задан╕ в файл╕
-сценар╕ю чи з командного рядка.
+%description -l uk.UTF-8
+sed (Stream EDitor) - я├п╣ п©п╬я┌п╬п╨п╬п╡п╦п╧ я┤п╦ п©п╟п╨п╣я┌п╫п╦п╧ (п╫п╣-я√п╫я┌п╣я─п╟п╨я┌п╦п╡п╫п╦п╧)
+я─п╣п╢п╟п╨я┌п╬я─. sed п╡п╦п╨п╬п╫я┐я■ п╬п©п╣я─п╟я├я√я≈ п╫п╟п╢ я┌п╣п╨я│я┌п╬п╪, я┴п╬ п©п╬п╢п╟я■я┌я▄я│я▐ п╧п╬п╪я┐ п╫п╟ п╡я┘я√п╢
+я┌п╟ п╡п╦п╡п╬п╢п╦я┌я▄ п╪п╬п╢п╦я└я√п╨п╬п╡п╟п╫п╦п╧ я┌п╣п╨я│я┌. п·п©п╣я─п╟я├я√я≈, я▐п╨я√ sed п╡п╦п╨п╬п╫я┐я■
+(п©я√п╢я│я┌п╟п╫п╬п╡п╨п╦, п╡п╦п╢п╟п╩п╣п╫п╫я▐, п╡я│я┌п╟п╡п╨п╦ я┌п╟ я√п╫.) п╪п╬п╤я┐я┌я▄ п╠я┐я┌п╦ п╥п╟п╢п╟п╫я√ п╡ я└п╟п╧п╩я√
+я│я├п╣п╫п╟я─я√я▌ я┤п╦ п╥ п╨п╬п╪п╟п╫п╢п╫п╬пЁп╬ я─я▐п╢п╨п╟.
 
 %prep
 %setup -q
