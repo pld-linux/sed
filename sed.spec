@@ -14,7 +14,7 @@ Summary(tr.UTF-8):	GNU dosya işleme aracı
 Summary(uk.UTF-8):	Потоковий редактор тексту GNU
 Name:		sed
 Version:	4.1.5
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Text
 Source0:	ftp://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
