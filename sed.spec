@@ -17,7 +17,7 @@ Version:	4.1.5
 Release:	3
 License:	GPL
 Group:		Applications/Text
-Source0:	ftp://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
 # Source0-md5:	7a1cbbbb3341287308e140bd4834c3ba
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
