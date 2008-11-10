@@ -1,0 +1,167 @@
+diff -Burp sed-4.1.5-orig/lib/utils.c sed-4.1.5-follow/lib/utils.c
+--- sed-4.1.5-orig/lib/utils.c	2005-06-21 16:09:40.000000000 +0200
++++ sed-4.1.5-follow/lib/utils.c	2006-12-07 19:08:02.000000000 +0100
+@@ -35,6 +35,12 @@
+ # include <stdlib.h>
+ #endif /* HAVE_STDLIB_H */
+ 
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++#include <sys/sendfile.h>
++#include <fcntl.h>
++
+ #include "utils.h"
+ 
+ const char *myname;
+@@ -315,32 +321,99 @@ do_ck_fclose(fp)
+ }
+ 
+ 
+-/* Panic on failing rename */
+-void
+-ck_rename (from, to, unlink_if_fail)
+-  const char *from, *to;
+-  const char *unlink_if_fail;
++#include <libgen.h>
++
++/* Follow symlink and panic if something fails.  Returned value is
++   ultimate symlink target, stored in malloc'd buffer.*/
++const char*
++ck_follow_symlink(const char * fname)
+ {
+-  int rd = rename (from, to);
+-  if (rd != -1)
+-    return;
++  static struct stat statbuf;
++  int err;
++  char * dir;
++
++  static size_t bufsize = 1024;
++  char * buf = malloc (bufsize);
++  char * buf2 = alloca (bufsize);
++
++  if (strlen (fname) >= bufsize)
++    panic("ck_follow_symlink: file name too long");
++  strcpy (buf, fname);
+ 
+-  if (unlink_if_fail)
++  while (1)
+     {
+-      int save_errno = errno;
+-      errno = 0;
+-      unlink (unlink_if_fail);
++      err = lstat (buf, &statbuf);
++
++      if (err != 0)
++	panic("ck_follow_symlink: couldn't lstat %s: %s", buf, strerror(errno));
+ 
+-      /* Failure to remove the temporary file is more severe, so trigger it first.  */
+-      if (errno != 0)
+-        panic (_("cannot remove %s: %s"), unlink_if_fail, strerror (errno));
++      if ((statbuf.st_mode & S_IFLNK) == S_IFLNK)
++	{
++	  err = readlink (buf, buf2, bufsize);
++
++	  if (err < 0)
++	    panic("ck_follow_symlink: readlink failed on %s: %s", buf, strerror(errno));
++	  else if (err == bufsize)
++	    panic("ck_follow_symlink: pointee name too long");
++	  else
++	    buf2 [err] = '\0';
++
++	  /* need to handle relative paths with care */
++	  if (buf2[0] != '/')
++	    {
++	      dir = dirname (buf);    // dir part of orig path
++	      int len = strlen (dir); // orig path len
++	      buf[len] = '/';
++	      strncpy (buf+len+1, buf2, bufsize - len - 1);
++	      if (buf[bufsize-1] != 0)
++		panic("ck_follow_symlink: pointee name too long");
++	    }
++	  else
++	    {
++	      strcpy (buf, buf2);
++	    }
++	}
++      else
++	break;
++    }
++
++  return buf;
++}
+ 
++/* Panic on failing unlink */
++void
++ck_unlink (name)
++  const char *name;
++{
++  if (unlink (name) == -1)
++    panic (_("cannot remove %s: %s"), name, strerror (errno));
++}
++
++/* Attempt to unlink denoted file if operation rd failed. */
++static int
++_unlink_if_fail (rd, unlink_if_fail)
++  int rd;
++  const char *unlink_if_fail;
++{
++  if (rd == -1 && unlink_if_fail)
++    {
++      int save_errno = errno;
++      ck_unlink (unlink_if_fail);
+       errno = save_errno;
+     }
+ 
+-  panic (_("cannot rename %s: %s"), from, strerror (errno));
++  return rd != -1;
+ }
+ 
++/* Panic on failing rename */
++void
++ck_rename (from, to, unlink_if_fail)
++  const char *from, *to;
++  const char *unlink_if_fail;
++{
++  if (!_unlink_if_fail (rename (from, to), unlink_if_fail))
++  panic (_("cannot rename %s: %s"), from, strerror (errno));
++}
+ 
+ 
+ 
+diff -Burp sed-4.1.5-orig/lib/utils.h sed-4.1.5-follow/lib/utils.h
+--- sed-4.1.5-orig/lib/utils.h	2005-06-21 16:09:40.000000000 +0200
++++ sed-4.1.5-follow/lib/utils.h	2006-12-07 19:00:11.000000000 +0100
+@@ -29,6 +29,7 @@ void ck_fflush P_((FILE *stream));
+ void ck_fclose P_((FILE *stream));
+ size_t ck_getline P_((char **text, size_t *buflen, FILE *stream));
+ FILE * ck_mkstemp P_((char **p_filename, char *tmpdir, char *base));
++const char* ck_follow_symlink P_((const char * fname));
+ void ck_rename P_((const char *from, const char *to, const char *unlink_if_fail));
+ 
+ VOID *ck_malloc P_((size_t size));
+--- sed-4.1.5-orig/sed/execute.c	2006-12-08 16:33:20.000000000 +0100
++++ sed-4.1.5-follow/sed/execute.c	2006-12-07 18:53:11.000000000 +0100
+@@ -712,16 +712,18 @@
+ 
+   if (in_place_extension && output_file.fp != NULL)
+     {
++      char * target_name = ck_strdup (ck_follow_symlink (input->in_file_name));
+       ck_fclose (output_file.fp);
+       if (strcmp(in_place_extension, "*") != 0)
+         {
++          char *backup_file_name = get_backup_file_name(target_name);
++	  ck_rename (target_name, backup_file_name, input->out_file_name);
+-          char *backup_file_name = get_backup_file_name(input->in_file_name);
+-	  ck_rename (input->in_file_name, backup_file_name, input->out_file_name);
+           free (backup_file_name);
+ 	}
+ 
++      ck_rename (input->out_file_name, target_name, input->out_file_name);
+-      ck_rename (input->out_file_name, input->in_file_name, input->out_file_name);
+       free (input->out_file_name);
++      free (target_name);
+     }
+ 
+   input->fp = NULL;

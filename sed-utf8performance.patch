@@ -1,0 +1,113 @@
+* looking for bonzini@gnu.org--2004b/sed--stable--4.1--patch-69 to compare with
+* comparing to bonzini@gnu.org--2004b/sed--stable--4.1--patch-69
+M  sed/mbcs.c
+M  sed/sed.h
+M  sed/execute.c
+
+* modified files
+
+--- orig/sed/execute.c
++++ mod/sed/execute.c
+@@ -235,25 +235,26 @@ str_append(to, string, length)
+   to->length = new_length;
+ 
+ #ifdef HAVE_MBRTOWC
+-  if (mb_cur_max == 1)
+-    return;
+-
+-  while (length)
+-    {
+-      int n = MBRLEN (string, length, &to->mbstate);
++  if (mb_cur_max > 1 && !is_utf8)
++    while (length)
++      {
++        size_t n = MBRLEN (string, length, &to->mbstate);
+ 
+-      /* An invalid sequence is treated like a singlebyte character. */
+-      if (n == -1)
+-	{
+-	  memset (&to->mbstate, 0, sizeof (to->mbstate));
+-	  n = 1;
+-	}
++        /* An invalid sequence is treated like a singlebyte character. */
++        if (n == (size_t) -1)
++	  {
++	    memset (&to->mbstate, 0, sizeof (to->mbstate));
++	    n = 1;
++	  }
+ 
+-      if (n > 0)
+-	length -= n;
+-      else
+-	break;
+-    }
++        if (n > 0)
++	  {
++	    string += n;
++	    length -= n;
++	  }
++        else
++	  break;
++      }
+ #endif
+ }
+ 
+
+
+--- orig/sed/mbcs.c
++++ mod/sed/mbcs.c
+@@ -18,7 +18,12 @@
+ #include "sed.h"
+ #include <stdlib.h>
+ 
++#ifdef HAVE_LANGINFO_CODESET
++#include <langinfo.h>
++#endif
++
+ int mb_cur_max;
++bool is_utf8;
+ 
+ #ifdef HAVE_MBRTOWC
+ /* Add a byte to the multibyte character represented by the state
+@@ -47,6 +52,26 @@ int brlen (ch, cur_stat)
+ void
+ initialize_mbcs ()
+ {
++  /* For UTF-8, we know that the encoding is stateless.  */
++  const char *codeset_name;
++
++#ifdef HAVE_LANGINFO_CODESET
++  codeset_name = nl_langinfo (CODESET);
++#else
++  codeset_name = getenv ("LC_ALL");
++  if (codeset_name == NULL || codeset_name[0] == '\0')
++    codeset_name = getenv ("LC_CTYPE");
++  if (codeset_name == NULL || codeset_name[0] == '\0')
++    codeset_name = getenv ("LANG");
++  if (codeset_name == NULL)
++    codeset_name = "";
++  else if (strchr (codeset_name, '.') !=  NULL)
++    codeset_name = strchr (codeset_name, '.') + 1;
++#endif
++
++  is_utf8 = (strcasecmp (codeset_name, "UTF-8") == 0
++	     || strcasecmp (codeset_name, "UTF8") == 0);
++
+ #ifdef HAVE_MBRTOWC
+   mb_cur_max = MB_CUR_MAX;
+ #else
+
+
+--- orig/sed/sed.h
++++ mod/sed/sed.h
+@@ -233,6 +233,7 @@ extern bool use_extended_syntax_p;
+ 
+ /* Declarations for multibyte character sets.  */
+ extern int mb_cur_max;
++extern bool is_utf8;
+ 
+ #ifdef HAVE_MBRTOWC
+ #ifdef HAVE_BTOWC
+
+
+
