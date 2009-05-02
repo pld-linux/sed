@@ -13,20 +13,15 @@ Summary(ru.UTF-8):	Потоковый редактор текста GNU
 Summary(tr.UTF-8):	GNU dosya işleme aracı
 Summary(uk.UTF-8):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	4.1.5
-Release:	5
-License:	GPL
+Version:	4.2
+Release:	1
+License:	GPL v3+
 Group:		Applications/Text
 Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
-# Source0-md5:	7a1cbbbb3341287308e140bd4834c3ba
+# Source0-md5:	31580bee0c109c0fc8f31c4cf204757e
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-pl.po-update.patch
-Patch2:		%{name}-utf8performance.patch
-Patch3:		%{name}-follow.patch
-Patch4:		%{name}-copy.patch
-Patch5:		%{name}-follow-relfix.patch
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	gettext-devel >= 0.14
@@ -102,11 +97,6 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-інт
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 %{__aclocal} -I config
