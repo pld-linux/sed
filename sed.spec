@@ -14,7 +14,7 @@ Summary(tr.UTF-8):	GNU dosya işleme aracı
 Summary(uk.UTF-8):	Потоковий редактор тексту GNU
 Name:		sed
 Version:	4.2.1
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Text
 Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
@@ -26,6 +26,11 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	gettext-devel >= 0.14
 BuildRequires:	texinfo
+%if %{with tests}
+%if "%(locale -a | grep -q '^ru_RU\.utf8$' ; echo $?)" == "1"
+BuildRequires:	locale(ru_RU.utf8)
+%endif
+%endif
 Obsoletes:	ssed
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
