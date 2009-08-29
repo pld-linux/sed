@@ -28,7 +28,7 @@ BuildRequires:	gettext-devel >= 0.14
 BuildRequires:	texinfo
 %if %{with tests}
 %if "%(locale -a | grep -q '^ru_RU\.utf8$' ; echo $?)" == "1"
-BuildRequires:	locale(ru_RU.utf8)
+BuildRequires:	glibc-localedb-all
 %endif
 %endif
 Obsoletes:	ssed
