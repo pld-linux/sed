@@ -112,6 +112,8 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-інт
 %configure
 %{__make}
 
+# LC_ALL=C overrides LANG which is required to run tests
+unset LC_ALL
 %{?with_tests:%{__make} check}
 
 %install
