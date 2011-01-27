@@ -25,6 +25,7 @@ Patch0:		%{name}-info.patch
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	gettext-devel >= 0.14
+BuildRequires:	libselinux-devel
 BuildRequires:	texinfo
 %if %{with tests}
 %if "%(locale -a | grep -q '^ru_RU\.utf8$' ; echo $?)" == "1"
