@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	tests	# do not perform "make check"
-#
+
 Summary:	A GNU stream text editor
 Summary(de.UTF-8):	GNU Stream-Text Editor
 Summary(es.UTF-8):	Editor de stream de la GNU
@@ -13,12 +13,12 @@ Summary(ru.UTF-8):	Потоковый редактор текста GNU
 Summary(tr.UTF-8):	GNU dosya işleme aracı
 Summary(uk.UTF-8):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	4.2.1
-Release:	2
+Version:	4.2.2
+Release:	1
 License:	GPL v3+
 Group:		Applications/Text
 Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
-# Source0-md5:	f0fd4d7da574d4707e442285fd2d3b86
+# Source0-md5:	4111de4faa3b9848a0686b2f260c5056
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
@@ -118,8 +118,6 @@ unset LC_ALL
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir}
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -142,7 +140,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog NEWS README THANKS
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/sed
 %{_mandir}/man1/*
 %lang(de) %{_mandir}/de/man1/*
 %lang(fi) %{_mandir}/fi/man1/*
