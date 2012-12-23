@@ -22,9 +22,10 @@ Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.8
-BuildRequires:	gettext-devel >= 0.14
+URL:		http://www.gnu.org/software/sed/
+BuildRequires:	autoconf >= 2.60
+BuildRequires:	automake >= 1:1.10
+BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	libselinux-devel
 BuildRequires:	texinfo
 %if %{with tests}
@@ -122,11 +123,11 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
-
-%find_lang %{name}
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/README.sed-non-english-man-pages
 
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
-rm -f $RPM_BUILD_ROOT%{_mandir}/README.sed-non-english-man-pages
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -141,10 +142,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog NEWS README THANKS
 %attr(755,root,root) %{_bindir}/sed
-%{_mandir}/man1/*
-%lang(de) %{_mandir}/de/man1/*
-%lang(fi) %{_mandir}/fi/man1/*
-%lang(hu) %{_mandir}/hu/man1/*
-%lang(ja) %{_mandir}/ja/man1/*
-%lang(pl) %{_mandir}/pl/man1/*
+%{_mandir}/man1/sed.1*
+%lang(de) %{_mandir}/de/man1/sed.1*
+%lang(fi) %{_mandir}/fi/man1/sed.1*
+%lang(hu) %{_mandir}/hu/man1/sed.1*
+%lang(ja) %{_mandir}/ja/man1/sed.1*
+%lang(pl) %{_mandir}/pl/man1/sed.1*
 %{_infodir}/sed.info*
