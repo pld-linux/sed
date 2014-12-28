@@ -25,7 +25,7 @@ Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/sed/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.10
-BuildRequires:	gettext-devel >= 0.17
+BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	libselinux-devel
 BuildRequires:	texinfo
 %if %{with tests}
