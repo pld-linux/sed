@@ -106,10 +106,6 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-інт
 %patch0 -p1
 
 %build
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
 %configure
 %{__make}
 
