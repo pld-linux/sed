@@ -13,12 +13,12 @@ Summary(ru.UTF-8):	Потоковый редактор текста GNU
 Summary(tr.UTF-8):	GNU dosya işleme aracı
 Summary(uk.UTF-8):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	4.2.2
-Release:	2
+Version:	4.3
+Release:	1
 License:	GPL v3+
 Group:		Applications/Text
-Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.gz
-# Source0-md5:	4111de4faa3b9848a0686b2f260c5056
+Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz
+# Source0-md5:	1957fe58dffa4a4106c1f1d7cc8dee18
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
@@ -29,6 +29,7 @@ BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	libselinux-devel
 BuildRequires:	texinfo
 %if %{with tests}
+BuildRequires:	bash
 %if "%(locale -a | grep -q '^ru_RU\.utf8$' ; echo $?)" == "1"
 BuildRequires:	glibc-localedb-all
 %endif
@@ -106,12 +107,13 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-інт
 %patch0 -p1
 
 %build
-%configure
+%configure \
+	--disable-silent-rules
 %{__make}
 
 # LC_ALL=C overrides LANG which is required to run tests
 unset LC_ALL
-%{?with_tests:%{__make} check}
+%{?with_tests:%{__make} check SHELL=/bin/bash}
 
 %install
 rm -rf $RPM_BUILD_ROOT
