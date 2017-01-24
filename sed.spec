@@ -23,11 +23,13 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/sed/
-BuildRequires:	autoconf >= 2.60
-BuildRequires:	automake >= 1:1.10
-BuildRequires:	gettext-tools >= 0.17
+BuildRequires:	autoconf >= 2.62
+BuildRequires:	automake >= 1:1.11.1
+BuildRequires:	gettext-tools >= 0.19.2
 BuildRequires:	libselinux-devel
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
+BuildRequires:	xz
 %if %{with tests}
 BuildRequires:	bash
 %if "%(locale -a | grep -q '^ru_RU\.utf8$' ; echo $?)" == "1"
