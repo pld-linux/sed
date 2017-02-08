@@ -14,7 +14,7 @@ Summary(tr.UTF-8):	GNU dosya işleme aracı
 Summary(uk.UTF-8):	Потоковий редактор тексту GNU
 Name:		sed
 Version:	4.4
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Text
 Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz
@@ -108,6 +108,9 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-інт
 %prep
 %setup -q
 %patch0 -p1
+
+# /etc/resolv.conf is stubbed on builders, change to something readable
+%{__sed} -i -e 's,"/etc/resolv\.conf","/etc/passwd",' gnulib-tests/test-read-file.c
 
 %build
 %configure \
