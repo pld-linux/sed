@@ -13,18 +13,18 @@ Summary(ru.UTF-8):	Потоковый редактор текста GNU
 Summary(tr.UTF-8):	GNU dosya işleme aracı
 Summary(uk.UTF-8):	Потоковий редактор тексту GNU
 Name:		sed
-Version:	4.7
+Version:	4.8
 Release:	1
 License:	GPL v3+
 Group:		Applications/Text
 Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz
-# Source0-md5:	777ddfd9d71dd06711fe91f0925e1573
+# Source0-md5:	6d906edfdb3202304059233f51f9a71d
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/sed/
 BuildRequires:	acl-devel
-BuildRequires:	autoconf >= 2.62
+BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11.1
 BuildRequires:	gettext-tools >= 0.19.2
 BuildRequires:	libselinux-devel
