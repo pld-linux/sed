@@ -37,7 +37,7 @@ BuildRequires:	bash
 BuildRequires:	glibc-localedb-all
 %endif
 %endif
-Obsoletes:	ssed
+Obsoletes:	ssed < 4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
