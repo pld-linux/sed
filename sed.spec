@@ -107,7 +107,7 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-інт
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 # /etc/resolv.conf is stubbed on builders, change to something readable
 %{__sed} -i -e 's,"/etc/resolv\.conf","/etc/passwd",' gnulib-tests/test-read-file.c
