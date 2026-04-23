@@ -1,6 +1,8 @@
 #
 # Conditional build:
-%bcond_without	tests	# do not perform "make check"
+%bcond_without	tests	# unit tests
+%bcond_without	selinux	# SELinux xattr support
+%bcond_without	smack	# smack xattr support
 
 Summary:	A GNU stream text editor
 Summary(de.UTF-8):	GNU Stream-Text Editor
@@ -17,17 +19,19 @@ Version:	4.10
 Release:	1
 License:	GPL v3+
 Group:		Applications/Text
-Source0:	http://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz
+Source0:	https://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz
 # Source0-md5:	c70dc5372db95c816442ffedf77a0d0f
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	5cd651063bfc00a82d820ba018672351
 Patch0:		%{name}-info.patch
+Patch1:		%{name}-smack.patch
 URL:		http://www.gnu.org/software/sed/
 BuildRequires:	acl-devel
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11.1
 BuildRequires:	gettext-tools >= 0.19.2
-BuildRequires:	libselinux-devel
+%{?with_selinux:BuildRequires:	libselinux-devel}
+%{?with_smack:BuildRequires:	smack-devel}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
 BuildRequires:	xz
@@ -108,13 +112,17 @@ sed (Stream EDitor) - це потоковий чи пакетний (не-інт
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p1
 
 # /etc/resolv.conf is stubbed on builders, change to something readable
 %{__sed} -i -e 's,"/etc/resolv\.conf","/etc/passwd",' gnulib-tests/test-read-file.c
 
 %build
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	%{!?with_smack:--without-libsmack} \
+	%{!?with_selinux:--without-selinux}
+
 %{__make}
 
 # LC_ALL=C overrides LANG which is required to run tests

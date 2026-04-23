@@ -1,0 +1,11 @@
+--- sed-4.10/m4/acl.m4.orig	2026-04-23 20:34:02.505098629 +0200
++++ sed-4.10/m4/acl.m4	2026-04-23 20:34:15.035030748 +0200
+@@ -208,7 +208,7 @@ AC_DEFUN([gl_FILE_HAS_ACL],
+                [Define to 1 if libsmack is usable.])
+              AS_CASE([$ac_cv_search_smack_new_label_from_path],
+                ["none required"], [],
+-               [FILE_HAS_ACL_LIB=$ac_cv_search_new_label_from_path])
++               [FILE_HAS_ACL_LIB=$ac_cv_search_smack_new_label_from_path])
+              gl_file_has_acl_uses_smack=yes],
+             [AS_CASE([$with_libsmack],
+                [yes], [AC_MSG_ERROR([libsmack not found or unusable])])])
